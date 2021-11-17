@@ -1,0 +1,23 @@
+﻿@model TestProject.ViewModels.LoginViewModel
+<link rel="stylesheet" href="~/css/stylesLogin.css">
+<link rel="stylesheet" href="~/css/reset.css">
+
+<div id="container">
+    <form method="post" asp-controller="Account" asp-action="Login">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="Email"></label><br />
+            <input asp-for="Email" class="field" />
+            
+        </div>
+        <div>
+            <label asp-for="Password"></label><br />
+            <input asp-for="Password" class="field" />            
+        </div>
+        
+        <div id="lower">
+            <input type="submit" value="Sign In" />
+        </div>
+    </form>
+</div>
+

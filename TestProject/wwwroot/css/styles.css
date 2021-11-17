@@ -1,339 +1,144 @@
-/*******************
-LOGIN FORM STYLESHEET
-by: Amit Jakhu
-www.amitjakhu.com
-*******************/
-
-/*******************
-FONTS
-*******************/
-
-@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
-
-/*******************
-SELECTION STYLING
-*******************/
-
-::selection {
-	color: #fff;
-	background: #f676b2; /* Safari */
-}
-::-moz-selection {
-	color: #fff;
-	background: #f676b2; /* Firefox */
-}
-
-/*******************
-BODY STYLING
-*******************/
-
-* {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-body {
-	background: url(../images/bg.png) repeat;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-weight:300;
-	text-align: left;
-	text-decoration: none;
-}
-
-#wrapper {
-	/* Center wrapper perfectly */
-	width: 300px;
-	height: 400px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin-left: -150px;
-	margin-top: -200px;
-}
-
+п»ї/* Basics */
 /*
-.gradient {
-	width: 600px;
-	height: 600px;
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	margin-left: -300px;
-	margin-top: -300px;
-	
-	background: url(../images/gradient.png) no-repeat;
+html, body {
+	width: 100%;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	color: #444;
+	-webkit-font-smoothing: antialiased;
+	background: url(../img/bg.png) repeat;
 }
 */
-
-.gradient {
-	/* Center Positioning */
-	width: 600px;
-	height: 600px;
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	margin-left: -300px;
-	margin-top: -300px;
-	
-	/* Fallback */ 
-	background-image: url(../images/gradient.png); 
-	background-repeat: no-repeat; 
-	
-	/* CSS3 Gradient */
-	background-image: -webkit-gradient(radial, 0% 0%, 0% 100%, from(rgba(213,246,255,1)), to(rgba(213,246,255,0)));
-	background-image: -webkit-radial-gradient(50% 50%, 40% 40%, rgba(213,246,255,1), rgba(213,246,255,0));
-	background-image: -moz-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
-	background-image: -ms-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
-	background-image: -o-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
+#container {
+    position: fixed;
+    width: 340px;
+    height: 330px;
+    top: 50%;
+    left: 50%;
+    margin-top: -140px;
+    margin-left: -170px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -webkit-animation-name: bounceIn;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: bounceIn;
+    -moz-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    animation-name: bounceIn;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
 }
 
-/*******************
-LOGIN FORM
-*******************/
 
-.login-form {
-	width: 300px;
-	margin: 0 auto;
-	position: relative;
-	z-index:5;
-	
-	background: #f3f3f3;
-	border: 1px solid #fff;
-	border-radius: 5px;
-	
-	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+
+form {
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
-/*******************
-HEADER
-*******************/
-
-.login-form .header {
-	padding: 40px 30px 30px 30px;
+label {
+    color: #555;
+    display: inline-block;
+    margin-left: 18px;
+    padding-top: 10px;
+    font-size: 14px;
 }
 
-.login-form .header h1 {
-	font-family: 'Bree Serif', serif;
-	font-weight: 300;
-	font-size: 28px;
-	line-height:34px;
-	color: #414848;
-	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
-	margin-bottom: 10px;
+p a {
+    font-size: 11px;
+    color: #aaa;
+    float: right;
+    margin-top: -13px;
+    margin-right: 20px;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
 }
 
-.login-form .header span {
-	font-size: 11px;
-	line-height: 16px;
-	color: #678889;
-	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
+    p a:hover {
+        color: #555;
+    }
+
+.field {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    outline: none;
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    margin-top: 12px;
+    margin-left: 18px;
+    width: 290px;
+    height: 35px;
+    border: 1px solid #c7d0d2;
+    border-radius: 2px;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
 }
 
-/*******************
-CONTENT
-*******************/
-
-.login-form .content {
-	padding: 0 30px 25px 30px;
+.field:hover {
+    border: 1px solid #b6bfc0;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
 }
 
-/* Input field */
-.login-form .content .input {
-	width: 188px;
-	padding: 15px 25px;
-	
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-weight: 400;
-	font-size: 14px;
-	color: #9d9e9e;
-	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
-	
-	background: #fff;
-	border: 1px solid #fff;
-	border-radius: 5px;
-	
-	box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
-	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
-	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
+.field:focus {
+    border: 1px solid #a8c9e4;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
 }
 
-/* Second input field */
-.login-form .content .password, .login-form .content .pass-icon {
-	margin-top: 25px;
+#lower {
+    background: #ecf2f5;
+    width: 100%;
+    height: 69px;
+    box-shadow: inset 0 1px 1px #fff;
+    border-top: 1px solid #ccc;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
-.login-form .content .input:hover {
-	background: #dfe9ec;
-	color: #414848;
+.check {
+    margin-left: 3px;
+    font-size: 11px;
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
 }
 
-.login-form .content .input:focus {
-	background: #dfe9ec;
-	color: #414848;
-	
-	box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
-	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
-	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
+input[type=submit] {
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+    background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+    background-image: linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+    border-radius: 30px;
+    border: 1px solid #66add6;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+    cursor: pointer;
 }
 
-.user-icon, .pass-icon {
-	width: 46px;
-	height: 47px;
-	display: block;
-	position: absolute;
-	left: 0px;
-	padding-right: 2px;
-	z-index: 3;
-	
-	-moz-border-radius-topleft: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-}
+    input[type=submit]:hover {
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
+        background-image: -moz-linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
+        background-image: linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
+    }
 
-.user-icon {
-	top:147px; /* Positioning fix for slide-in, got lazy to think up of simpler method. */
-	background: rgba(65,72,72,0.75) url(../images/user-icon.png) no-repeat center;	
-}
-
-.pass-icon {
-	top:221px;
-	background: rgba(65,72,72,0.75) url(../images/pass-icon.png) no-repeat center;
-}
-
-/* Animation */
-.input, .user-icon, .pass-icon, .button, .register {
-	transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	outline:none;
-}
-
-/*******************
-FOOTER
-*******************/
-
-.login-form .footer {
-	padding: 25px 30px 40px 30px;
-	overflow: auto;
-	
-	background: #d4dedf;
-	border-top: 1px solid #fff;
-	
-	box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
-	-moz-box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
-	-webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
-}
-
-/* Login button */
-.login-form .footer .button {
-	float:right;
-	padding: 11px 25px;
-	
-	font-family: 'Bree Serif', serif;
-	font-weight: 300;
-	font-size: 18px;
-	color: #fff;
-	text-shadow: 0px 1px 0 rgba(0,0,0,0.25);
-	
-	background: #56c2e1;
-	border: 1px solid #46b3d3;
-	border-radius: 5px;
-	cursor: pointer;
-	
-	box-shadow: inset 0 0 2px rgba(256,256,256,0.75);
-	-moz-box-shadow: inset 0 0 2px rgba(256,256,256,0.75);
-	-webkit-box-shadow: inset 0 0 2px rgba(256,256,256,0.75);
-}
-
-.login-form .footer .button:hover {
-	background: #3f9db8;
-	border: 1px solid rgba(256,256,256,0.75);
-	
-	box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
-	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
-	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
-}
-
-.login-form .footer .button:focus {
-	position: relative;
-	bottom: -1px;
-	
-	background: #56c2e1;
-	
-	box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);
-	-moz-box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);
-	-webkit-box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);
-}
-
-/* Register button */
-.login-form .footer .register {
-	display: block;
-	float: right;
-	padding: 10px 5px 10px 0;
-	margin-right: 20px;
-	
-	background: none;
-	border: none;
-	cursor: pointer;
-	
-	font-family: 'Bree Serif', serif;
-	font-weight: 300;
-	font-size: 18px;
-	color: #414848;
-	text-shadow: 0px 1px 0 rgba(256,256,256,0.5);
-}
-
-.login-form .footer .register:hover {
-	color: #3f9db8;
-}
-
-.login-form .footer .register:focus {
-	position: relative;
-	bottom: -1px;
-}
-
-/* Стили бара vladmaxi, можно удалить */
-.vladmaxi-top{
-	line-height: 24px;
-	font-size: 11px;
-	background: #eee;
-	text-transform: uppercase;
-	z-index: 9999;
-	position: fixed;
-	top:0;
-	left:0;
-	width:100%;
-	font-family: calibri;
-	font-size: 13px;
-	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
-	-webkit-animation: slideOut 0.5s ease-in-out 0.3s backwards;
-}
-@-webkit-keyframes slideOut{
-	0%{top:-30px; opacity: 0;}
-	100%{top:0px; opacity: 1;}
-}
-
-.vladmaxi-top a{
-	padding: 0px 10px;
-	letter-spacing: 1px;
-	color: #333;
-	text-shadow: 0px 1px 1px #fff;
-	display: block;
-	float: left;
-}
-.vladmaxi-top a:hover{
-	background: #fff;
-}
-.vladmaxi-top span.right{
-	float: right;
-}
-.vladmaxi-top span.right a{
-	float: left;
-	display: block;
-}
+    input[type=submit]:active {
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
+        background-image: -moz-linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
+        background-image: linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
+    }
