@@ -9,8 +9,12 @@ namespace TestProject.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        //[Required]
+        //[Display(Name = "Email")]
+        //public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

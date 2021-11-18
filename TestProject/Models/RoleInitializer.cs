@@ -10,9 +10,9 @@ namespace TestProject.Models
     {
         public static async Task InitializeAsync(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
-            string adminName = "Alesya";
-            string adminEmail = "Alesya";
-            string password = "Alesya_2001";
+            string adminName = "Administrator";
+            string adminEmail = "admin@gmail.com";
+            string password = "Administrator_01";
             if (await roleManager.FindByNameAsync("admin") == null)
             {
                 await roleManager.CreateAsync(new IdentityRole("admin"));

@@ -29,10 +29,11 @@ namespace TestProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email };
+                User user = new User { UserName = model.UserName, Email = model.UserName + "@gmail.com"};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "user");
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -60,12 +61,13 @@ namespace TestProject.Controllers
             if (ModelState.IsValid)
             {
                 var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                    await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    // проверяем, принадлежит ли URL приложению
+                    
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
+
                         return Redirect(model.ReturnUrl);
                     }
                     else
