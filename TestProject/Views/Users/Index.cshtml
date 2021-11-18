@@ -7,6 +7,7 @@
 
 <table class="table">
     <tr><th>Email</th><th></th></tr>
+
     @foreach (var user in Model)
     {
         <tr>
@@ -17,6 +18,9 @@
                     <button type="submit" class="btn btn-sm btn-danger">
                         Delete
                     </button>
+                    @*@if (!user.Email.Contains("admin")) {*@
+                    <a class="btn btn-sm btn-primary" asp-action="EditRole" asp-route-userid="@user.Id">Role</a>
+                    @*}*@
                 </form>
             </td>
         </tr>

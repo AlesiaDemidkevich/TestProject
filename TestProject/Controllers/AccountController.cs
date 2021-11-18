@@ -13,11 +13,13 @@ namespace TestProject.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
         [HttpGet]
         public IActionResult Register()
@@ -67,12 +69,21 @@ namespace TestProject.Controllers
                     
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
-
                         return Redirect(model.ReturnUrl);
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        var user = await _userManager.FindByNameAsync(model.UserName);
+                        var roles = await _userManager.GetRolesAsync(user);
+                        if (roles.Contains("admin")){
+                            return RedirectToAction("Index", "Users");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+
+                        
                     }
                 }
                 else

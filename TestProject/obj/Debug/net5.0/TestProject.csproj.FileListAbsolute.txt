@@ -77,6 +77,6 @@ D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Accou
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\Edit.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\Index.cshtml.g.cs
-D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Roles\UserList.cshtml.g.cs
-D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Roles\Edit.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Roles\Index.cshtml.g.cs
+D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\EditRole.cshtml.g.cs
+D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\UserList.cshtml.g.cs
