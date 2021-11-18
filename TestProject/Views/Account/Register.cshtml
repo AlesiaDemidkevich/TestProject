@@ -1,25 +1,22 @@
 ﻿@model TestProject.ViewModels.RegisterViewModel
-    <link rel="stylesheet" href="~/css/styles.css">
-    <link rel="stylesheet" href="~/css/reset.css">
+<link rel="stylesheet" href="~/css/style.css">
 
-    <div id="container">
-        <form method="post" asp-controller="Account" asp-action="Register">
-            <div asp-validation-summary="ModelOnly"></div>
-            <div>
-                <label asp-for="UserName"></label><br />
-                <input asp-for="UserName" class="field" />
-            </div>
-            <div>
-                <label asp-for="Password"></label><br />
-                <input asp-for="Password" class="field" />
-            </div>
-            <div>
-                <label asp-for="PasswordConfirm"></label><br />
-                <input asp-for="PasswordConfirm" class="field" />
-            </div>
-            <div id="lower">
-                <input type="submit" value="Sign Up" />
-            </div>
-        </form>
-    </div>
+<div id="container">
+    <form method="post" asp-controller="Account" asp-action="Register">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="UserName"></label><br />
+            <input asp-for="UserName" class="field" />
+
+        </div>
+        <div>
+            <label asp-for="Password"></label><br />
+            <input asp-for="Password" class="field" />
+        </div>
+
+        <div class="pos">
+            <input class="btn btn-sm btn-primary" type="submit" value="Sign Up" />
+        </div>
+    </form>
+</div>
 

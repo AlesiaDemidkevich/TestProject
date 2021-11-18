@@ -12,10 +12,6 @@ namespace TestProject.ViewModels
         [Display(Name = "Username")]
         public string UserName { get; set; }
 
-        //[Required]
-        //[Display(Name = "Email")]
-        //public string Email { get; set; }
-
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

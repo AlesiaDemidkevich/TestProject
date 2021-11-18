@@ -1,6 +1,5 @@
 ﻿@model TestProject.ViewModels.LoginViewModel
-<link rel="stylesheet" href="~/css/stylesLogin.css">
-<link rel="stylesheet" href="~/css/reset.css">
+<link rel="stylesheet" href="~/css/style.css">
 
 <div id="container">
     <form method="post" asp-controller="Account" asp-action="Login">
@@ -15,8 +14,8 @@
             <input asp-for="Password" class="field" />            
         </div>
         
-        <div id="lower">
-            <input type="submit" value="Sign In" />
+        <div class="pos">
+            <input class="btn btn-sm btn-primary" type="submit" value="Sign In" />
         </div>
     </form>
 </div>
