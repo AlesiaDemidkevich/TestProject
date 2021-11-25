@@ -1,0 +1,16 @@
+﻿td {
+    padding: 70px 100px 20px 20px;
+}
+
+table {
+    width: max-content;
+}
+
+img {
+    height: 350px;
+    width: 250px;
+}
+
+.cards-item__desc {
+    color: dimgray;
+}

@@ -1,6 +1,59 @@
 ﻿@{
     ViewData["Title"] = "Chemistry";
 }
-<h1>
-    Chemistry
+<link rel="stylesheet" type="text/css" href="~/css/page.css" />
+<h1 class="page-header text-center">
+    Химия. Сборник тестов
 </h1>
+
+
+<div class="page-desc text-center">
+    <div class="card-text frame">
+        <img src="https://res.cloudinary.com/alesya/image/upload/v1637824131/Images/angl_lm9rxn.jpg"></img>
+    </div>
+    <div class="card-test frame">
+        <div class="text-center lead visual_text">
+            Сборник содержит 5 вариантов тестовых заданий по химии для подготовки к централизованному тестированию, разработанных в соответствии с программой вступительных испытаний, а также ответы к ним.
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<h2 class="card-test__title text-center">ТЕСТЫ</h2>
+
+<div class="card-test__text block-xs lead">
+    <h4>Часть А</h4><p>
+    В каждом задании части A один из предложенных вариантов ответа является верным. Выберите ответ.<br><br>
+</p><h4>Часть В</h4><p>
+    В расчетных задачах части В получите ответ в виде числового значения в единицах, указанных в условии задания. Дробные числа округлите до целых по правилам приближенных вычислений. Введите ответ. В заданиях на установление соответствия ответ в виде сочетания букв и цифр введите, соблюдая алфавитную последовательность букв левого столбца.
+</p><br>
+</div>
+<div class="container">
+    <div class="row">
+        <form class="col col-lg" action="/test-online/24143/variant1/" method="post">
+            <input type="hidden" name="COURSE_ID" value="1" />
+            <input type="hidden" name="ID" value="1" />
+            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант 1</button>
+        </form>
+        <form class="col col-lg" action="/test-online/24143/variant2/" method="post">
+            <input type="hidden" name="COURSE_ID" value="1" />
+            <input type="hidden" name="ID" value="2" />
+            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант 2</button>
+        </form>
+        <form class="col col-lg" action="/test-online/24143/variant3/" method="post">
+            <input type="hidden" name="COURSE_ID" value="1" />
+            <input type="hidden" name="ID" value="3" />
+            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант 3</button>
+        </form>
+        <form class="col col-lg" action="/test-online/24143/variant4/" method="post">
+            <input type="hidden" name="COURSE_ID" value="1" />
+            <input type="hidden" name="ID" value="7" />
+            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант 4</button>
+        </form>
+        <form class="col col-lg" action="/test-online/24143/variant5/" method="post">
+            <input type="hidden" name="COURSE_ID" value="1" />
+            <input type="hidden" name="ID" value="8" />
+            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант 5</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿img {
+    height: 450px;
+    width: 350px;
+}
+
+h2 {
+    padding:50px;
+    margin-top:30px;
+}
+
+.cards-item__desc {
+    color: dimgray;
+}
+.frame {
+    float: left;
+    width: 50%;
+
+}
+
+.page-desc {
+    margin-top: 50px;    
+}
+
+.visual_text {
+    padding: 40px;
+    border-bottom: 2px solid orange;
+    font-size: 24px;
+    margin-bottom: 200px;
+}
