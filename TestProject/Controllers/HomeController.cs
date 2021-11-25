@@ -13,6 +13,7 @@ namespace TestProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+       
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -23,6 +24,59 @@ namespace TestProject.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult PageEnglish()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PageBelleng()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PageMath()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PageBiol()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PageHis()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PageObsh()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PageRuslen()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PagePhys()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PageChem()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

@@ -2,6 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
+@model TestProject.ViewModels.PageViewModel;
+
 @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
 {
 
@@ -32,52 +34,52 @@
         <table>
             <tr>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24143/" title="Английский язык. Сборник тестов">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PageEnglish" title="Английский язык. Сборник тестов">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824131/Images/angl_lm9rxn.jpg"></div><div class="cards-item__content"><div class="cards-item__name">Английский язык. Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 60 вопросов</p></div></div>
                     </a>
                 </td>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24262/" title=" Беларуская мова. Зборнік тэстаў">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PageBelleng" title=" Беларуская мова. Зборнік тэстаў">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824131/Images/bel_ax1jkr.jpg"></div><div class="cards-item__content"><div class="cards-item__name"> Беларуская мова. Зборнік тэстаў</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 40 вопросов</p></div></div>
                     </a>
                 </td>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24148/" title="Математика. Сборник тестов">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PageMath" title="Математика. Сборник тестов">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824131/Images/math_vgs1ra.jpg"></div><div class="cards-item__content"><div class="cards-item__name">Математика. Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 30 вопросов</p></div></div>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24239/" title=" Биология. Сборник тестов">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PageBiol" title=" Биология. Сборник тестов">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824131/Images/biol_fpqdnb.jpg"></div><div class="cards-item__content"></div><div class="cards-item__name">Биология. Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 50 вопросов</p></div>
 
                     </a>
                 </td>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24213/" title="История Беларуси. Сборник тестов">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PageHis" title="История Беларуси. Сборник тестов">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824131/Images/his_y28yju.jpg"></div><div class="cards-item__content"><div class="cards-item__name">История Беларуси. Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 50 вопросов</p></div></div>
                     </a>
                 </td>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24172/" title="Обществоведение. Сборник тестов">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PageObsh" title="Обществоведение. Сборник тестов">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824132/Images/obsh_zpwuvk.jpg"></div><div class="cards-item__content"><div class="cards-item__name">Обществоведение. Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 50 вопросов</p></div></div>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24147/" title="Русский язык. Сборник тестов">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PageRuslen" title="Русский язык. Сборник тестов">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824132/Images/rus_ul2m80.jpg"></div><div class="cards-item__content"><div class="cards-item__name">Русский язык. Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 40 вопросов</p></div></div>
                     </a>
                 </td>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24154/" title="Физика. Сборник тестов">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PagePhys" title="Физика. Сборник тестов">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824132/Images/phis_rytcqo.jpg"></div><div class="cards-item__content"><div class="cards-item__name">Физика. Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 30 вопросов</p></div></div>
                     </a>
                 </td>
                 <td>
-                    <a class="cards-item text-center" href="/test-online/24153/" title="Химия. Сборник тестов">
+                    <a class="cards-item text-center" asp-controller="Home" asp-action="PageChem" title="Химия. Сборник тестов">
                         <div class="cards-item__img"><img src="https://res.cloudinary.com/alesya/image/upload/v1637824131/Images/chem_ws1dgq.jpg"></div><div class="cards-item__content"><div class="cards-item__name">Химия. Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по 50 вопросов</p></div></div>
                     </a>
                 </td>
