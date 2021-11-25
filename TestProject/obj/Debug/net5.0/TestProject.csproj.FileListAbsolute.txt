@@ -80,3 +80,5 @@ D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Roles\Index.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\EditRole.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\UserList.cshtml.g.cs
+D:\BSTU\Course4\PI\CP\TestProject\TestProject\bin\Debug\net5.0\Humanizer.dll
+D:\BSTU\Course4\PI\CP\TestProject\TestProject\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
