@@ -19,6 +19,7 @@
             </div>
             @if (User.Identity.IsAuthenticated)
             {
+                <div>@User.Identity.Name</div>
                 <form style="float:right; margin:10px" method="post" asp-controller="Account" asp-action="Logout">
                     <input class="btn btn-outline-danger" type="submit" value="Exit" />
                 </form>

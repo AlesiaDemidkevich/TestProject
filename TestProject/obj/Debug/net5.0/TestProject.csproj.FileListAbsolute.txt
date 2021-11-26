@@ -91,3 +91,4 @@ D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Home\
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Home\PageRuslen.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Home\PagePhys.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Home\PageChem.cshtml.g.cs
+D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Test\CreateTest.cshtml.g.cs

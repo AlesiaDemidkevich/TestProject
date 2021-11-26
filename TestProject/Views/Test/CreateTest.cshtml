@@ -1,0 +1,18 @@
+﻿@model TestProject.ViewModels.TestViewModel
+@{
+    ViewBag.Title = "Create test";
+}
+<form asp-action="Create" asp-controller="Test">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Subject" class="control-label">Subject</label>
+        <input type="text" asp-for="Subject" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Question" class="control-label">Question</label>
+        <input type="text" asp-for="Question" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-outline-secondary" />
+    </div>
+</form>
