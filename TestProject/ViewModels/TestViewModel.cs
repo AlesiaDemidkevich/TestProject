@@ -15,8 +15,14 @@ namespace TestProject.ViewModels
         public string Subject { get; set; }
 
         [Required]
-        [Display(Name = "Question")]
-        public string Question { get; set; }
+        [Display(Name = "Question text")]
+        public string QuestionText { get; set; }
+
+        [Required]
+        [Display(Name = "Question coefficient")]
+        public int QuestionCoefficient { get; set; }
+        public string ImageUrl { get; set; }
+       // List<string> QuestionList { get; set; }
 
     }
 }
