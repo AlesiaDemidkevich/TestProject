@@ -16,7 +16,8 @@ function duplicate() {
     let inp = document.createElement('input');
     inp.className = "form-control";
     inp.setAttribute('type', 'text');
-    inp.setAttribute('asp-for', 'QuestionText');
+/*    inp.setAttribute('asp-for', 'QuestionText');*/
+    inp.setAttribute('name','text')
     inp.setAttribute('style', 'float:left; display:inline-block; width:91%; margin-right:20px;');
     inp.id = "duplic" + i;
 
@@ -71,7 +72,10 @@ function add(button) {
     let inp = document.createElement('input');
     inp.className = "form-control";
     inp.setAttribute('type', 'text');
-    inp.setAttribute('asp-for', 'AnswerText');
+    //inp.setAttribute('asp-for', 'AnswerText');
+    let ind = k - 1;
+    let nameId = 'AnswerList[' + ind + '].text';
+    inp.setAttribute('name', nameId)
     inp.setAttribute('style', 'float: left; display: inline-block; width: 85%; margin:5px 20px 0px 65px');
     inp.id = "a" + k;
     let inpDel = document.createElement('button');

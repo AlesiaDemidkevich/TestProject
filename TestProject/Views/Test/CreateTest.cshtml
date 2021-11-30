@@ -3,9 +3,9 @@
     ViewBag.Title = "Create test";
 }
 <link rel="stylesheet" type="text/css" href="~/css/page.css" />
-<form method="post" asp-controller="Test" asp-action="CreateTest" asp-route-SchoolId="@ViewBag.TestId" id="container">
+<form method="post" asp-controller="Test" asp-action="Create" id="container" style="position: relative; padding-bottom: 50px;">
     <div class="text-danger"></div>
-    <div class="form-group" >
+    <div class="form-group">
         <label asp-for="Subject" class="control-label">Subject</label>
         <select class="form-control" asp-for="Subject" id="source">
             @foreach (var subject in @ViewBag.subjects)
@@ -14,24 +14,22 @@
             }
         </select>
     </div>
-    <input type="button" onclick="duplicate()" class="btn btn-outline-info" value="Add question" style="margin-top:35px; margin-bottom:10px"/>
+    <input type="button" onclick="duplicate()" class="btn btn-outline-info" value="Add question" style="margin-top:35px; margin-bottom:10px" />
     <div class="form-group" id="div1">
-        <label asp-for="QuestionText" class="control-label" style="margin:7px 5px 7px 0px">Question 1</label>
+        <label class="control-label" style="margin:7px 5px 7px 0px">Question 1</label>
         <div>
-            <input type="text" asp-for="QuestionText" class="form-control" id="duplic1" style="float:left; display:inline-block; width:91%; margin-right:20px;" />
+            <input type="text" name="QuestionText" class="form-control" id="duplic1" style="float:left; display:inline-block; width:91%; margin-right:20px;" />
             <button onclick="del(this)" class="btn btn-outline-danger" id="1">Delete</button>
         </div>
-        <label asp-for="AnswerText" class="control-label"  style="margin:7px 5px 7px 0px">Answers</label>
-        <button onclick="return add(this)" class="btn btn-outline-info" id="v1"  style="margin:7px 5px 7px 5px">Add</button>
+        <label class="control-label" style="margin:7px 5px 7px 0px">Answers</label>
+        <button onclick="return add(this)" class="btn btn-outline-info" id="v1" style="margin:7px 5px 7px 5px">Add</button>
         <div id="answ1">
-            <input type="text" asp-for="AnswerText" class="form-control" id="a1" style="float: left; display: inline-block; width: 85%; margin:5px 20px 0px 65px" />
-            <button onclick="return delAnsw(this)" class="btn btn-outline-danger" id="w1" style="margin-top:5px" >Delete</button>
+            <input type="text" name="AnswerList[0].text" class="form-control" id="a1" style="float: left; display: inline-block; width: 85%; margin:5px 20px 0px 65px" />
+            <button onclick="return delAnsw(this)" class="btn btn-outline-danger" id="w1" style="margin-top:5px">Delete</button>
         </div>
     </div>
-</form>
-<form asp-action="Create" asp-controller="Test" id="container">
     <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-outline-secondary" />
+        <input type="submit" value="Create" class="btn btn-outline-secondary" style="margin-top:30px; bottom:0px; position:absolute" />
     </div>
 </form>
 <script src="~/js/duplicate.js">

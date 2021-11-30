@@ -42,15 +42,16 @@ namespace TestProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTest(TestViewModel model)
+        public async Task<IActionResult> Create(TestViewModel model)
         {            
-                Question question = new Question { Text = model.QuestionText, IdQuestionCoefficient=model.QuestionCoefficient,ImageUrl=model.ImageUrl};
-                db.Questions.Add(question);
+                
+                //Question question = new Question { Text = model.QuestionText, IdQuestionCoefficient=model.QuestionCoefficient,ImageUrl=model.ImageUrl};
+                //db.Questions.Add(question);
                 await db.SaveChangesAsync();
                 if (ModelState.IsValid)
                 {
-                    Test test = new Test { IdQuestion = question.Id};
-                                                 db.Tests.Add(test);
+                   // Test test = new Test { IdQuestion = question.Id};
+                    //                             db.Tests.Add(test);
                 await db.SaveChangesAsync();
                 }
                 else
