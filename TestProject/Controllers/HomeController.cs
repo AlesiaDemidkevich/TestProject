@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -14,13 +16,20 @@ namespace TestProject.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private ApplicationContext db;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        IWebHostEnvironment _appEnvironment;
         public string getCurrentUserId()
         {
             return User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationContext context, IWebHostEnvironment appEnvironment, UserManager<User> userManager, SignInManager<User> signInManager)
         {
+            db = context;
+            _appEnvironment = appEnvironment;
+            _userManager = userManager;
+            _signInManager = signInManager;
             _logger = logger;
         }
 
@@ -30,8 +39,9 @@ namespace TestProject.Controllers
         }
 
         
-        public async Task<IActionResult> GetPage(string URL)
+        public async Task<IActionResult> GetPage(string URL, int subject)
         {
+            ViewBag.variants = db.Tests.Where(a => a.IdSubject == subject).ToList();
             return View(URL);
         }
 

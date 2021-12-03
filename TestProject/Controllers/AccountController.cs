@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using TestProject.ViewModels;
 
 namespace TestProject.Controllers
 {
+    
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;

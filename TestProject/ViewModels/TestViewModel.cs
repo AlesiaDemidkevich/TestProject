@@ -15,20 +15,9 @@ namespace TestProject.ViewModels
         [Display(Name = "Subject")]
         public string Subject { get; set; }
 
-        [Required]
-        [Display(Name = "Question text")]
-        public string QuestionText { get; set; }
+        public string Variant { get; set; }
 
-        //[Required]
-        //[Display(Name = "Answer text")]
-        //public string AnswerText { get; set; }
-
-        //[Required]
-        //[Display(Name = "Question coefficient")]
-        //public int QuestionCoefficient { get; set; }
-        //public bool isRight { get; set; }
-        //public string ImageUrl { get; set; }
-        public ICollection<QuestionAnswer> AnswerList { get; set; }
+        public ICollection<QuestionViewModel> QuestionList { get; set; }
 
     }
 }

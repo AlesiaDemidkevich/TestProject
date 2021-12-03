@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TestProject.Models;
 
 namespace TestProject.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20211203192648_VariantTest")]
+    partial class VariantTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,10 +159,10 @@ namespace TestProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("IdSubject")
+                    b.Property<int>("IdQuestion")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdTest")
+                    b.Property<int>("IdSubject")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
@@ -258,9 +260,6 @@ namespace TestProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<int>("IdSubject")
-                        .HasColumnType("int");
 
                     b.Property<int>("IdVariant")
                         .HasColumnType("int");

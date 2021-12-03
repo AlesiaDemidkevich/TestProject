@@ -10,6 +10,6 @@ namespace TestProject.Models
         public int Id { get; set; }
         public string Text { get; set; }
         public int IdQuestion { get; set; }
-        public bool isRight { get; set; }
+        public bool isRight { get; set; } = false;
     }
 }

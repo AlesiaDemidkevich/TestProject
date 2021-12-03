@@ -10,7 +10,7 @@ using TestProject.ViewModels;
 
 namespace TestProject.Controllers
 {
-    [Authorize(Roles = "admin")]
+    
     public class UsersController : Controller
     {
         UserManager<User> _userManager;

@@ -9,8 +9,8 @@ namespace TestProject.Models
     {
         public int Id { get; set; }
         public string Text { get; set; }
-        public int IdQuestionCoefficient { get; set; }
         public string ImageUrl { get; set; }
         public int IdSubject { get; set; }
+        public int IdTest { get; set; }
     }
 }

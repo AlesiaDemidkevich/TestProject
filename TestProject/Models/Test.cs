@@ -8,7 +8,7 @@ namespace TestProject.Models
     public class Test
     {
         public int Id { get; set; }
-        public string Variant { get; set; }
-        public int IdQuestion { get; set; }          
+        public int IdVariant { get; set; }
+        public int IdSubject { get; set; }
     }
 }
