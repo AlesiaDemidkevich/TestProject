@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Search Page";
+}
+<link rel="stylesheet" type="text/css" href="~/css/pageHome.css" />
+<body>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+    {
+        <h1 class="page-header text-center">Тесты онлайн</h1>
+        <p class="text-center lead">
+            В данном разделе нашего сайта вы можете пройти бесплатное онлайн-тестирование на основе отдельно взятых тестов из книг. Выполнив тест, вы сразу увидите свои результаты: количество правильных и неправильных ответов, а также время, затраченное на прохождение тестирования.
+        </p>
+        <form id="sort" action="/Home/Index" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" method="post">
+            <input type="radio" id="All" name="type" onchange="checkRadio(id)" checked>
+            <label for="r3" style="margin:2px 5px 2px 2px">Все</label>
+            <input type="radio" id="Технические" name="type" onchange="checkRadio(id)">
+            <label for="r1" style="margin:2px 5px 2px 2px">Технические</label>
+            <input type="radio" id="Гуманитарные" name="type" onchange="checkRadio(id)">
+            <label for="r2" style="margin:2px 5px 2px 2px">Гуманитарнxые</label>
+            <input type="radio" id="Естественные" name="type" onchange="checkRadio(id)">
+            <label for="r3" style="margin:2px 5px 2px 2px">Естественные</label>
+        </form>
+        <div class="page-desc">
+            <table id="results">
+                       <tr>
+                           
+                                <td>
+                                    <a class="cards-item text-center" asp-controller="Home" asp-action="GetPage" asp-route-url=@ViewBag.subjects[0].PageUrl asp-route-subject=@ViewBag.subjects[0].Id>
+                                        <div class="cards-item__img"><img src=@ViewBag.subjects[0].ImgURL></div><div class="cards-item__content"><div class="cards-item__name">@ViewBag.subjects[0].Name .Сборник тестов</div><div class="cards-item__desc"><div class="cards-item__desc-icon"></div><p class="cards-item__desc-text">5 вариантов теста по @ViewBag.subjects[0].QuestionCount вопросов</p></div></div>
+                                    </a>
+                                </td>
+
+                       </tr>
+            </table>
+        </div>
+
+    }
+    else
+    {
+        <h1 class="page-header text-center">Тесты онлайн</h1>
+        <p class="text-center lead">
+            Вы можете пройти бесплатное онлайн-тестирование на основе отдельно взятых тестов из книг. Выполнив тест, вы сразу увидите свои результаты: количество правильных и неправильных ответов, а также время, затраченное на прохождение тестирования.
+        </p>
+    }
+</body>
+<script>
+
+    function checkRadio(id) {
+
+        $.ajax({
+            type: "get",
+            url: '@Url.Action("Sort","Home")',
+            data: { id: id },
+            timeout: 1000,
+            success: function (response) {
+                $('#results').html(response);
+        }
+        });
+
+    }
+</script>
+

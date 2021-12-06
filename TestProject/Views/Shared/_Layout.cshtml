@@ -11,7 +11,25 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                {
+                    <a class="navbar-brand" class="stretched-link"  asp-area="" asp-controller="Home" asp-action="Index" style="display: inline-block;">Главная</a>
+                    <form method="post" asp-controller="Home" asp-action="SearchResult" style="float: left">
+
+                        <input type="text" name="search" placeholder="Search subject" style="float: left; width: 60%; margin:5px" />
+                        <button type="submit" class="searchb" style="float: left; display: inline-block; margin:5px">Search</button>
+
+                    </form>
+                }
+                else if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Users" asp-action="Index">Главная</a>
+                }
+                else
+                {
+                    <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+
+                }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,12 +56,13 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <div id="results"></div>
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-           
+
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -52,3 +71,42 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+
+    function search(subject) {
+
+        //var radio = document.getElementsByName('type');
+
+        //for (var i = 0; i < radio.length; i++) {
+        //    if (radio[i].checked) {
+        //        document.cookie = 'radio=' + radio[i].id + '; path=/;';
+        //    }
+        //}
+
+        $.ajax({
+            type: "get",
+            url: '@Url.Action("SearchResult","Home")',
+            data: { id: subject },
+            timeout: 1000,
+            success: function (response) {
+                $('#results').html(response);
+        }
+        });
+
+    }
+    //function getCookie(name) {
+    //    var matches = document.cookie.match(new RegExp(
+    //        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    //    ));
+    //    return matches ? decodeURIComponent(matches[1]) : undefined;
+    //}
+    //cookie = getCookie('radio');
+    //if (cookie) {
+    //    console.log(cookie);
+
+    //    var radio = document.getElementById(cookie);
+    //    radio.checked = true;
+
+    //}
+
+</script>

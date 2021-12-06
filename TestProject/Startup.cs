@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestProject.Models;
+using TestProject.SignalR;
 
 namespace TestProject
 {
@@ -25,7 +26,7 @@ namespace TestProject
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {            
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(connection));
@@ -41,7 +42,10 @@ namespace TestProject
             })
             .AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
             services.AddControllersWithViews();
-            
+            services.AddSignalR(options =>
+            {
+                options.EnableDetailedErrors = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +73,9 @@ namespace TestProject
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<PageUpdate>("/chat");
             });
+            
         }
     }
 }

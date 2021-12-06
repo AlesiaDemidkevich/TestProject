@@ -16,9 +16,10 @@ namespace TestProject.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         RoleManager<IdentityRole> _roleManager;
-
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
+        private ApplicationContext db;
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, ApplicationContext context )
         {
+            db = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
@@ -62,6 +63,7 @@ namespace TestProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 var result =
@@ -71,6 +73,7 @@ namespace TestProject.Controllers
                     
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
+                        
                         return Redirect(model.ReturnUrl);
                     }
                     else
@@ -81,7 +84,7 @@ namespace TestProject.Controllers
                             return RedirectToAction("Index", "Users");
                         }
                         else
-                        {
+                        {                            
                             return RedirectToAction("Index", "Home");
                         }
 

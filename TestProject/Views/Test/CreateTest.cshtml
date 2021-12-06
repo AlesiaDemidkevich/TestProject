@@ -19,7 +19,7 @@
         <label class="control-label" style="margin:7px 5px 7px 0px">Question 1</label>
         <div>
             <input type="text" name="QuestionList[0].text" class="form-control" id="duplic1" style="float:left; display:inline-block; width:91%; margin:0px 20px 10px 0px" />
-            <button onclick="del(this)" class="btn btn-outline-danger" id="1">Delete</button>
+            <button onclick="del(this)" class="btn btn-outline-danger" id="1"  style="background-color:white">Delete</button>
         </div>
         <input type="file" size="60" name="QuestionList[0].imageUrl"/><br>
         <label class="control-label" style="margin:7px 5px 7px 0px">Answers</label>
@@ -36,4 +36,31 @@
     </div>
 </form>
 <script src="~/js/duplicate.js">
+</script>
+<script>
+    var subject = document.getElementById('source');
+    subject.onchange = function () {
+        document.cookie = 'subject=' + subject.value + '; path=/;';
+    };
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var select = document.getElementById('source'),
+        cookie = getCookie('subject');
+    if (cookie) {
+        select.value = cookie;
+    }
+
+
+    var subjectSelect = container.source;
+
+    function changeOption() {
+        location.reload();
+    }
+
+    subjectSelect.addEventListener("change", changeOption);
+
 </script>
