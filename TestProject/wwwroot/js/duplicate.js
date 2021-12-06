@@ -8,8 +8,14 @@ function duplicate() {
     let lab = document.createElement('label');
     lab.className = "control-label";
     lab.setAttribute('asp-for', 'QuestionText');
-    lab.setAttribute('style', 'margin:7px 5px 7px 0px');
+    lab.setAttribute('style', 'display:inline-block; margin:7px 5px 7px 0px;');
     lab.innerHTML = 'Question ' + i;
+
+    let sel = document.createElement("select");
+    sel.id = "t" + i;
+    sel.options[0] = new Option('Type A', 'A');
+    sel.options[1] = new Option('Type B', 'B');
+
 
     let divCh = document.createElement('div');
     let idq = i - 1;
@@ -31,7 +37,7 @@ function duplicate() {
     let labA = document.createElement('label');
     labA.className = "control-label";
     labA.setAttribute('asp-for', 'AnswerText');
-    labA.setAttribute('style', 'margin:7px 5px 7px 0px');
+    labA.setAttribute('style', 'margin:7px 5px 7px 0px;');
     labA.innerHTML = 'Answers';
 
     let inpAdd = document.createElement('button');
@@ -53,6 +59,7 @@ function duplicate() {
     divCh.appendChild(inp);
     divCh.appendChild(inpDel);
     div.appendChild(lab);
+    div.appendChild(sel);
     div.appendChild(divCh);
     div.appendChild(file);
     div.appendChild(document.createElement('br'));

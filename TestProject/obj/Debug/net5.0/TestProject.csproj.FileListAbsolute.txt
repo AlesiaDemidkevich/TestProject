@@ -72,7 +72,6 @@ D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\TestProject.dll
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\ref\TestProject.dll
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\TestProject.pdb
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\TestProject.genruntimeconfig.cache
-D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\TestProject.csproj.AssemblyReference.cache
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\Edit.cshtml.g.cs
@@ -97,3 +96,4 @@ D:\BSTU\Course4\PI\CP\TestProject\TestProject\bin\Debug\net5.0\Microsoft.Extensi
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\bin\Debug\net5.0\libman.json
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\bin\Debug\net5.0\System.Net.WebSockets.WebSocketProtocol.dll
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Home\Search.cshtml.g.cs
+D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\UserTest\UserTest.cshtml.g.cs

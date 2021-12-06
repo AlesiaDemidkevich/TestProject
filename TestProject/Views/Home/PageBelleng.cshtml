@@ -32,35 +32,9 @@
 </div>
 <div class="container">
     <div class="row">
-        @*<form class="col col-lg" action="/test-online/24143/variant1/" method="post">
-            <input type="hidden" name="COURSE_ID" value="1" />
-            <input type="hidden" name="ID" value="1" />
-            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Варыянт 1</button>
-        </form>
-        <form class="col col-lg" action="/test-online/24143/variant2/" method="post">
-            <input type="hidden" name="COURSE_ID" value="1" />
-            <input type="hidden" name="ID" value="2" />
-            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Продолжить" title="Продолжить">Варыянт 2</button>
-        </form>
-        <form class="col col-lg" action="/test-online/24143/variant3/" method="post">
-            <input type="hidden" name="COURSE_ID" value="1" />
-            <input type="hidden" name="ID" value="3" />
-            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Варыянт 3</button>
-        </form>
-        <form class="col col-lg" action="/test-online/24143/variant4/" method="post">
-            <input type="hidden" name="COURSE_ID" value="1" />
-            <input type="hidden" name="ID" value="7" />
-            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Варыянт 4</button>
-        </form>
-        <form class="col col-lg" action="/test-online/24143/variant5/" method="post">
-            <input type="hidden" name="COURSE_ID" value="1" />
-            <input type="hidden" name="ID" value="8" />
-            <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Варыянт 5</button>
-        </form>*@
-
-        @foreach (var t in @ViewBag.variants)
+       @foreach (var t in @ViewBag.variants)
         {
-            <form class="col col-lg" method="post">
+            <form class="col col-lg" method="post" asp-controller="UserTest" asp-action="Index">
                 <input type="hidden" name="COURSE_ID" value="1" />
                 <input type="hidden" name="ID" />
                 <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант @t.IdVariant</button>
