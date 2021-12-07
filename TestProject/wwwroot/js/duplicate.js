@@ -9,36 +9,37 @@ function duplicate() {
     lab.className = "control-label";
     lab.setAttribute('asp-for', 'QuestionText');
     lab.setAttribute('style', 'display:inline-block; margin:7px 5px 7px 0px;');
-    lab.innerHTML = 'Question ' + i;
-
-    let sel = document.createElement("select");
-    sel.id = "t" + i;
-    sel.options[0] = new Option('Type A', 'A');
-    sel.options[1] = new Option('Type B', 'B');
-
+    lab.innerHTML = 'Вопрос ' + i;   
 
     let divCh = document.createElement('div');
     let idq = i - 1;
 
     let file = document.createElement('input');
-    let fileId = 'QuestionList[' + idq + '].imageUrl';
+    let fileId = 'QuestionList[' + idq + '].imageUrlFile';
     file.setAttribute('name', fileId)
     file.type = "file";    
     file.size = "60";
+
+    let sel = document.createElement("select");
+    sel.id = "t" + i;
+    sel.options[0] = new Option('Часть A', 'A');
+    sel.options[1] = new Option('Часть B', 'B');
+    let name = 'QuestionList[' + idq + '].Type';
+    sel.setAttribute('name', name);
 
     let inp = document.createElement('input');
     inp.className = "form-control";
     inp.setAttribute('type', 'text');    
     let nameId = 'QuestionList[' + idq + '].text';
-    inp.setAttribute('name', nameId)
-    inp.setAttribute('style', 'float:left; display:inline-block; width:91%; margin:0px 20px 10px 0px;');
+    inp.setAttribute('name', nameId);
+    inp.setAttribute('style', 'float:left; display:inline-block; width:90%; margin:0px 16px 10px 0px;');
     inp.id = "duplic" + i;
 
     let labA = document.createElement('label');
     labA.className = "control-label";
     labA.setAttribute('asp-for', 'AnswerText');
     labA.setAttribute('style', 'margin:7px 5px 7px 0px;');
-    labA.innerHTML = 'Answers';
+    labA.innerHTML = 'Ответы';
 
     let inpAdd = document.createElement('button');
     inpAdd.className = "btn btn-outline-info";
@@ -47,7 +48,7 @@ function duplicate() {
         return add(inpAdd);
     }
     inpAdd.setAttribute('style', 'margin:7px 5px 7px 5px');
-    inpAdd.innerText = "Add"
+    inpAdd.innerText = "Добавить"
 
     let inpDel = document.createElement('button');
     inpDel.className = "btn btn-outline-danger";
@@ -55,7 +56,7 @@ function duplicate() {
     inpDel.onclick = function () {
         del(inpDel);
     }
-    inpDel.innerText = "Delete"
+    inpDel.innerText = "Удалить"
     divCh.appendChild(inp);
     divCh.appendChild(inpDel);
     div.appendChild(lab);
@@ -98,28 +99,18 @@ function add(button) {
     let inp = document.createElement('input');
     inp.className = "form-control";
     inp.setAttribute('type', 'text');
-    inp.setAttribute('style', 'float: left; display: inline-block; width: 78%; margin:5px 20px 0px 65px');
+    inp.setAttribute('style', 'float: left; display: inline-block; width: 77%; margin:5px 20px 0px 65px');
     inp.id = "a" + k;
-    //if (singl == 0) {
-        //let nameId = 'QuestionList[' + questId + '].AnswerList[' + 0 + '].text';
-        //inp.setAttribute('name', nameId);
-        //let checkId = 'QuestionList[' + questId + '].AnswerList[' + 0 + '].isRight';
-        //check.setAttribute('name', checkId);
-        //singl++;
-    //}
-    //else {
         let count = parent.getElementsByClassName('count').length;
         let nameId = 'QuestionList[' + questId + '].AnswerList[' + count + '].text';
         inp.setAttribute('name', nameId)
         let checkId = 'QuestionList[' + questId + '].AnswerList[' + count + '].isRight';
         check.setAttribute('name', checkId);
-       
-    //}
-
+ 
     let labC = document.createElement('label');
     labC.className = "control-label";
-    labC.setAttribute('style', 'margin:7px 5px 7px 3px');
-    labC.innerHTML = 'isRight';
+    labC.setAttribute('style', 'margin:7px 5px 7px 8px');
+    labC.innerHTML = 'Верно';
 
     let inpDel = document.createElement('button');
     inpDel.className = "btn btn-outline-danger";
@@ -128,7 +119,7 @@ function add(button) {
         delAnsw(inpDel);
     }
     inpDel.setAttribute('style', 'margin-top:5px')
-    inpDel.innerText = "Delete";
+    inpDel.innerText = "Удалить";
     div.appendChild(inp);
     div.appendChild(check);
     div.appendChild(labC);

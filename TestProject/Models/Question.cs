@@ -12,5 +12,6 @@ namespace TestProject.Models
         public string ImageUrl { get; set; }
         public int IdSubject { get; set; }
         public int IdTest { get; set; }
+        public string Type { get; set; }
     }
 }

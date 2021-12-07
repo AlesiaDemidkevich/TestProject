@@ -113,6 +113,7 @@ namespace TestProject.Controllers
                 {
                     UserId = user.Id,
                     UserEmail = user.Email,
+                    UserName = user.UserName,
                     UserRoles = userRoles,
                     AllRoles = allRoles
                 };

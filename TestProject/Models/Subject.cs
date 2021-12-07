@@ -13,7 +13,6 @@ namespace TestProject.Models
         public string ImgURL { get; set; }
         public string PageUrl { get; set; }
         public int QuestionCount { get; set; }
-
         public string Type { get; set; }
     }
 }

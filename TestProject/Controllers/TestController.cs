@@ -17,7 +17,7 @@ namespace TestProject.Controllers
    
     public class TestController : Controller
     {
-        Account account = new Account("alesya", "267351316653189", "zh2QL2GT8Gi8R5e8wDIJPwiTTFs");        
+        Account account = new Account("alesya", "267351316653189", "UPnJYCb_HLWg3_QRcLyJnWCTyyw");        
         private ApplicationContext db;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
@@ -77,7 +77,9 @@ namespace TestProject.Controllers
                 int idTest = db.Tests.OrderByDescending(u => u.Id).First().Id;
                 foreach (var i in questionList)
                 {
-                    Question question = new Question { Text = i.Text, ImageUrl = i.ImageUrl, IdSubject = idSubject, IdTest = idTest };
+                    var img = LoadImage(i.ImageUrlFile);
+                    i.ImageUrl = img;
+                    Question question = new Question { Text = i.Text, ImageUrl = i.ImageUrl, IdSubject = idSubject, IdTest = idTest, Type=i.Type };
                     ICollection<QuestionAnswer> questionAnswerList = i.AnswerList;
                     db.Questions.Add(question);
                     await db.SaveChangesAsync();

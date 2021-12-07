@@ -17,7 +17,7 @@
                     <form method="post" asp-controller="Home" asp-action="SearchResult" style="float: left">
 
                         <input type="text" name="search" placeholder="Search subject" style="float: left; width: 60%; margin:5px" />
-                        <button type="submit" class="searchb" style="float: left; display: inline-block; margin:5px">Search</button>
+                        <button type="submit" class="searchb" style="float: left; display: inline-block; margin:5px">Найти</button>
 
                     </form>
                 }
@@ -39,16 +39,16 @@
             {
                 <div>@User.Identity.Name</div>
                 <form style="float:right; margin:10px" method="post" asp-controller="Account" asp-action="Logout">
-                    <input class="btn btn-outline-danger" type="submit" value="Exit" />
+                    <input class="btn btn-outline-danger" type="submit" value="Выйти" />
                 </form>
             }
             else
             {
                 <form style="float:right; margin:2px" asp-controller="Account" asp-action="Login">
-                    <input class="btn btn-outline-primary" type="submit" value="Sign In" />
+                    <input class="btn btn-outline-primary" type="submit" value="Войти" />
                 </form>
                 <form style="float:right; margin:10px" asp-controller="Account" asp-action="Register">
-                    <input class="btn btn-outline-primary" type="submit" value="Sign Up" />
+                    <input class="btn btn-outline-primary" type="submit" value="Регистрация" />
                 </form>
             }
         </nav>
@@ -75,14 +75,6 @@
 
     function search(subject) {
 
-        //var radio = document.getElementsByName('type');
-
-        //for (var i = 0; i < radio.length; i++) {
-        //    if (radio[i].checked) {
-        //        document.cookie = 'radio=' + radio[i].id + '; path=/;';
-        //    }
-        //}
-
         $.ajax({
             type: "get",
             url: '@Url.Action("SearchResult","Home")',
@@ -94,19 +86,5 @@
         });
 
     }
-    //function getCookie(name) {
-    //    var matches = document.cookie.match(new RegExp(
-    //        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    //    ));
-    //    return matches ? decodeURIComponent(matches[1]) : undefined;
-    //}
-    //cookie = getCookie('radio');
-    //if (cookie) {
-    //    console.log(cookie);
-
-    //    var radio = document.getElementById(cookie);
-    //    radio.checked = true;
-
-    //}
 
 </script>

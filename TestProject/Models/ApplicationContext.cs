@@ -6,7 +6,7 @@ namespace TestProject.Models
     public class ApplicationContext: IdentityDbContext<User>
     {
         public DbSet<Subject> Subjects { get; set; }
-        public DbSet<Subject> Variants { get; set; }
+        public DbSet<Variant> Variants { get; set; }
         public DbSet<QuestionCoefficient> QuestionCoefficients { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionAnswer> QuestionAnswers { get; set; }

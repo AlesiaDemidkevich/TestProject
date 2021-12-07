@@ -4,8 +4,8 @@
 }
 
 <div style="margin-bottom:20px">
-    <a class="btn btn-outline-primary" asp-action="Create">Create user</a>
-    <a class="btn btn-outline-primary" asp-action="CreateTest" asp-controller="Test">Create test</a>
+    <a class="btn btn-outline-primary" asp-action="Create">Добавить пользователя</a>
+    <a class="btn btn-outline-primary" asp-action="CreateTest" asp-controller="Test">Добавить тест</a>
 </div>
 
 <table class="table">
@@ -17,10 +17,10 @@
             <td>@user.UserName</td>
             <td>
                 <form style="float:right" asp-action="Delete" asp-route-id="@user.Id" method="post">
-                    <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@user.Id">Change</a>                   
-                    <a class="btn btn-outline-info" asp-action="EditRole" asp-route-userid="@user.Id">Role</a>                   
+                    <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@user.Id">Изменить</a>                   
+                    <a class="btn btn-outline-info" asp-action="EditRole" asp-route-userid="@user.Id">Роль</a>                   
                     <button type="submit" class="btn btn-outline-danger">
-                        Delete
+                        Удалить
                     </button>
                 </form>
             </td>

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TestProject.Models.Subject
+@{
     ViewData["Title"] = "History";
 }
 <link rel="stylesheet" type="text/css" href="~/css/page.css" />
@@ -33,7 +34,7 @@
        
         @foreach (var t in @ViewBag.variants)
         {
-            <form class="col col-lg" method="post" asp-controller="UserTest" asp-action="Index">
+            <form class="col col-lg" method="post" asp-controller="UserTest" asp-action="Index" asp-route-subId=@Model.Id asp-route-variant=@t.IdVariant>
                 <input type="hidden" name="COURSE_ID" value="1" />
                 <input type="hidden" name="ID" />
                 <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант @t.IdVariant</button>

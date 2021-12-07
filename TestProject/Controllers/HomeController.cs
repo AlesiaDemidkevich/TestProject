@@ -45,7 +45,8 @@ namespace TestProject.Controllers
         public async Task<IActionResult> GetPage(string URL, int subject)
         {
             ViewBag.variants = db.Tests.Where(a => a.IdSubject == subject).ToList();
-            return View(URL);
+            Subject sub = db.Subjects.Where(s => s.Id == subject).First();
+            return View(URL,sub);
         }
 
         public IActionResult Sort(string id)

@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Physics";
 }
+@model TestProject.Models.Subject
 <link rel="stylesheet" type="text/css" href="~/css/page.css" />
 <h1 class="page-header text-center">
     Физика. Сборник тестов
@@ -23,17 +24,17 @@
 
 <div class="card-test__text block-xs lead">
     <h4>Часть А</h4><p>
-    В каждом задании части A один из предложенных вариантов ответа является верным.<br><br>
-</p><h4>Часть В</h4><p>
-    Выберите ответ. В заданиях части В получите ответ в виде числового значения в единицах, указанных в условии задания. Если в результате вычислений получается не целое число, округлите его до целого по правилам приближенных вычислений.
-</p><br>
+        В каждом задании части A один из предложенных вариантов ответа является верным.<br><br>
+    </p><h4>Часть В</h4><p>
+        Выберите ответ. В заданиях части В получите ответ в виде числового значения в единицах, указанных в условии задания. Если в результате вычислений получается не целое число, округлите его до целого по правилам приближенных вычислений.
+    </p><br>
 </div>
 <div class="container">
     <div class="row">
-        
+
         @foreach (var t in @ViewBag.variants)
         {
-            <form class="col col-lg" method="post" asp-controller="UserTest" asp-action="Index">
+            <form class="col col-lg" method="post" asp-controller="UserTest" asp-action="Index" asp-route-subId=@Model.Id asp-route-variant=@t.IdVariant>
                 <input type="hidden" name="COURSE_ID" value="1" />
                 <input type="hidden" name="ID" />
                 <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант @t.IdVariant</button>
