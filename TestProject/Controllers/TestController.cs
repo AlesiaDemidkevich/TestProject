@@ -45,7 +45,7 @@ namespace TestProject.Controllers
                 var uploadResult = cloudinary.Upload(uploadParams);
                 return Convert.ToString(uploadResult.Url);
             }
-            else return DefaultImageUrl;
+            else return null;
         }
 
         // GET: TestController

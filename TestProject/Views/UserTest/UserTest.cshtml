@@ -1,30 +1,92 @@
 ﻿@model TestProject.ViewModels.TestViewModel 
-<h1>@Model.Subject</h1>
-<div id="typeA">
 
-</div>
-<div id="typeB">
-</div>
-
+<h1 class="page-header text-center" name="Subject">@ViewBag.testView.Subject</h1>
 <div id="container">
-    @foreach(var test in Model.QuestionList)
-    {
-        <div id="type">
-            @test.Type
-        </div>
-        <div id="question">
-            @test.Text
-        </div>
-        <div id="img">
-           <img src="@test.ImageUrl" style="width:200px; height:140px"/>
-        </div>
-        <div id="answers">
-            @foreach (var answer in test.AnswerList ) { 
-                <div id="text">
-                    @answer.Text
+    <form asp-controller="UserTest" asp-action="Test" asp-route-subject="@ViewBag.testView.Subject" asp-route-variant="@ViewBag.testView.Variant" method="post">
+        @{ int i = 0;
+            int k = 0;
+            int a = 0;
+            int b = 0;}
+        <h3 style="margin:20px">Часть A</h3>
+        @foreach (var test in @ViewBag.testView.QuestionList)
+        {
+            @if (test.Type == "A")
+            {
+                int num = i+1;
+                <h4 class="page-header text-center" style="margin:10px">А @num</h4>
+                <div id="question">
+                    @test.Text
                 </div>
+                @if (test.ImageUrl != null)
+                {
+                    <div id="img">
+                        <img src="@test.ImageUrl" style="width:200px; height:140px"/>
+                    </div>
+                }
+
+    <div id="answers" style="margin:30px">
+        @foreach (var answer in test.AnswerList)
+        {
+            <input type="checkbox" id="@i" asp-for="@Model.QuestionList[i].AnswerList[a].isChecked" value="True">
+            <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</lable><br />
+            a++;
+        }
+
+    </div>
+                a = 0;
+                i++;
             }
+
+        }
+        <h3 style="margin:20px">Часть B</h3>
+        @foreach (var test in @ViewBag.testView.QuestionList)
+        {
+            k = i;
+            if (test.Type == "B")
+            {
+                int num2 = k + 1;
+                <h4 class="page-header text-center" style="margin:10px">B @num2</h4>
+                <div id="question">
+                    @test.Text
+                </div>
+                @if (test.ImageUrl != null)
+                {
+                    <div id="img">
+                        <img src="@test.ImageUrl" style="width:200px; height:140px"/>
+                    </div>  
+                }
+
+                <div id="answers" style="margin:30px">
+                    Ответ:
+                     <br />
+                     <input type="text" name="QuestionList[@k].AnswerList[@b].text" >
+                          @{
+                              b++;
+                              k++;
+                            }
+                 </div>
+            }
+         }
+        <div class="form-group">
+            <input type="submit" value="Завершить тест" class="btn btn-outline-primary" />
         </div>
-    }
-    <br/>
+    </form>
+    <br />
 </div>
+<script>
+
+    @*function endTest() {
+
+         $.ajax({
+            type: "get",
+            url: '@Url.Action("Test","UserTest")',
+            data: { id: id },
+            timeout: 1000,
+            success: function (response) {
+                $('#results').html(response);
+        }
+        });
+    }*@
+
+
+</script>

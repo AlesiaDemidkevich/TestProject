@@ -17,7 +17,7 @@ namespace TestProject.ViewModels
 
         public string Variant { get; set; }
 
-        public ICollection<QuestionViewModel> QuestionList { get; set; }
+        public List<QuestionViewModel> QuestionList { get; set; }
 
     }
 }

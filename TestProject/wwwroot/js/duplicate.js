@@ -150,22 +150,3 @@ function getAllAnswerForQuestion(parent,qId) {
     return false;
 }
 
-
-
-    //var i = 0;
-    //$('#addQuestion').click(function () {
-    //    i++;
-    //    var html2Add = "< div class='form-group'' id = 'div1; >" +
-    //        "<label class='control-label' style='margin:7px 5px 7px 0px'>Question 1</label>" +
-    //        "<div>" +
-    //            "<input type='text'' name='QuestionList["+i+"].text'' class='form-control' id='duplic1' style='float:left; display:inline-block; width:91%; margin-right:20px;' />"
-    //            "<button onclick='del(this)' class='btn btn - outline - danger' id='1'>Delete</button>" +
-    //         "</div>" +
-    //                "<label class='control - label' style='margin: 7px 5px 7px 0px'>Answers</label>" +
-    //                "<button onclick='return add(this)' class='btn btn-outline-info' id='v1' style='margin:7px 5px 7px 5px'>Add</button>" +
-    //                "<div id='answ1'' class='count'>" +
-    //                "<input type='text' name='QuestionList["+i+"].AnswerList[0].text' class='form - control' id='a1' style='float: left; display: inline - block; width: 85 %; margin: 5px 20px 0px 65px' />" +
-    //                "<button onclick='return delAnsw(this)' class='btn btn - outline - danger' id='w1' style='margin - top: 5px'>Delete</button>" 
-    //    "</div ></div > ";
-    //    $('#container').append(html2Add);
-    //})

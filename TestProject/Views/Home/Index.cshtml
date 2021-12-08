@@ -58,19 +58,10 @@ else
     </p>
 }
 </body>
-@*<script src="~/js/microsoft/signalr/dist/browser/signalr.min.js"></script>*@
 <script>
 
     function checkRadio(id) {
-
-        //var radio = document.getElementsByName('type');
-
-        //for (var i = 0; i < radio.length; i++) {
-        //    if (radio[i].checked) {
-        //        document.cookie = 'radio=' + radio[i].id + '; path=/;';
-        //    }
-        //}
-
+        
         $.ajax({
             type: "get",
             url: '@Url.Action("Sort","Home")',
@@ -82,20 +73,6 @@ else
         });
 
     }
-    //function getCookie(name) {
-    //    var matches = document.cookie.match(new RegExp(
-    //        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    //    ));
-    //    return matches ? decodeURIComponent(matches[1]) : undefined;
-    //}
-    //cookie = getCookie('radio');
-    //if (cookie) {
-    //    console.log(cookie);
-
-    //    var radio = document.getElementById(cookie);
-    //    radio.checked = true;
-
-    //}
-
+    
 </script>
 

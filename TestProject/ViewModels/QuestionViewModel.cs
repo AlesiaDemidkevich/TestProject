@@ -18,7 +18,7 @@ namespace TestProject.ViewModels
         public string Text { get; set; }
 
         public string Type { get; set; }
-        public ICollection<QuestionAnswer> AnswerList { get; set; }
+        public List<QuestionAnswer> AnswerList { get; set; }
 
         public string ImageUrl { get; set; }
         public IFormFile ImageUrlFile { get; set; }

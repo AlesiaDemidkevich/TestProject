@@ -36,14 +36,21 @@ namespace TestProject.Controllers
         }
         public IActionResult Index(int subId, int variant)
         {
+            TestViewModel testViewModel = GetTest(subId,variant);
+            ViewBag.testView = testViewModel;
+            return View("UserTest");
+        }
+
+        public TestViewModel GetTest(int subId, int variant) {
             var subject = db.Subjects.Where(s => s.Id == subId).First().Name;
             var varName = db.Variants.Where(v => v.Id == variant).First().Name;
             var testId = db.Tests.Where(t => t.IdSubject == subId && t.IdVariant == variant).First().Id;
             var questions = db.Questions.Where(q => q.IdSubject == subId && q.IdTest == testId).ToList();
-           
+
             List<QuestionViewModel> qwList = new List<QuestionViewModel>();
-            foreach (var k in questions) {
-                
+            foreach (var k in questions)
+            {
+
                 var answers = (from answ in db.QuestionAnswers
                                join quest in db.Questions on answ.IdQuestion equals quest.Id
                                join test in db.Tests on quest.IdTest equals test.Id
@@ -52,9 +59,48 @@ namespace TestProject.Controllers
                 qwList.Add(new QuestionViewModel { Text = k.Text, ImageUrl = k.ImageUrl, Type = k.Type, AnswerList = answers });
             }
 
-            TestViewModel testViewModel = new TestViewModel {Subject=subject,Variant=varName,QuestionList=qwList};
+            TestViewModel testViewModel = new TestViewModel { Subject = subject, Variant = varName, QuestionList = qwList };
+            return testViewModel;
+        }
+
+        public async Task<IActionResult> Test(TestViewModel testViewModel, string subject, string variant)
+        {
+            var subId = db.Subjects.Where(s => s.Name == subject).First().Id;
+            var varId = db.Variants.Where(v => v.Name == variant).First().Id;
+            TestViewModel allTestViewModel = GetTest(subId, varId);
+            allTestViewModel = SortTest(allTestViewModel);
+
+            for (int i=0;i<allTestViewModel.QuestionList.Count;i++){
+
+                for (int j = 0; j < allTestViewModel.QuestionList[i].AnswerList.Count; j++) { 
+                    
+                }
+
+            }
+
 
             return View("UserTest", testViewModel);
+        }
+
+        public TestViewModel SortTest(TestViewModel testViewModel){
+            List<QuestionViewModel> questionList = new List<QuestionViewModel>();
+
+            foreach (var test in testViewModel.QuestionList)
+            {
+                if (test.Type == "A")
+                {
+                    questionList.Add(test);
+                }
+            }
+            foreach (var test in testViewModel.QuestionList)
+            {
+                if (test.Type == "B")
+                {
+                    questionList.Add(test);
+                }
+            }
+            testViewModel.QuestionList = questionList;
+            return testViewModel;
         }
     }
 }
