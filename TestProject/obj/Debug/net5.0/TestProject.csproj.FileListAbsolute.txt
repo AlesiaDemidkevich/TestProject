@@ -410,3 +410,4 @@ D:\BSTU\Course4\PI\CP\TestProject\TestProject\bin\Debug\net5.0\zh-Hant\Microsoft
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\TestProject.csproj.AssemblyReference.cache
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\TestProject.MvcApplicationPartsAssemblyInfo.cs
 D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\UserTest\Result.cshtml.g.cs
+D:\BSTU\Course4\PI\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Home\UserResult.cshtml.g.cs

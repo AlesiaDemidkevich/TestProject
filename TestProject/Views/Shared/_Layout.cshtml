@@ -13,13 +13,13 @@
             <div class="container">
                 @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
                 {
-                    <a class="navbar-brand" class="stretched-link"  asp-area="" asp-controller="Home" asp-action="Index" style="display: inline-block;">Главная</a>
-                    <form method="post" asp-controller="Home" asp-action="SearchResult">
+                    <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Home" asp-action="Index" style="display: inline-block;">Главная</a>
 
+                    <form method="post" asp-controller="Home" asp-action="SearchResult">
                         <input type="text" name="search" placeholder="Введите предмет" style="float: left; width: 70%; margin:5px" />
                         <button type="submit" class="searchb" style="float: left; display: inline-block; margin:5px">Найти</button>
-
                     </form>
+                    <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Home" asp-action="AllResult" style="display: inline-block;">Мои результаты</a>
                 }
                 else if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                 {

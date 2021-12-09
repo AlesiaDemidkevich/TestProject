@@ -2,23 +2,6 @@
     ViewData["Title"] = "Результат";
     ViewBag.Title = "Результат";
 }
-<div>
-    @{
-        if (@Model.mark <= 35)
-        {
-            <h1> @Model.mark% Ну ты и тупой!</h1>
-        }
-        else if (@Model.mark > 35 && @Model.mark <= 70)
-        {
-            <h1>@Model.mark% Нормально!</h1>
-        }
-        else if (@Model.mark > 70)
-        {
-            <h1>@Model.mark% Красавчик!</h1>
-        }
-    }
-
-</div>
 
 <h1 class="page-header text-center" name="Subject">@ViewBag.result.test.Subject</h1>
 <h3 class="page-header text-center" name="Mark">Результат - @ViewBag.result.Mark%</h3>
@@ -42,7 +25,7 @@
                 @if (test.ImageUrl != null)
                 {
                     <div id="img">
-                        <img src="@test.ImageUrl" style="width:200px; height:140px" />
+                        <img src="@test.ImageUrl" style="width:400px; height:140px" />
                     </div>
                 }
 

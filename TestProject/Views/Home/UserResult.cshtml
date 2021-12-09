@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Мои тесты";
+}
+@model TestProject.Models.Result
+
+
+    @if (ViewBag.results != null)
+    {
+<table class="table">
+    <tr>
+        <th>Предмет</th>
+        <th>Вариант</th>
+        <th>Оценка</th>
+        <th>Дата</th>
+        <th></th>
+    </tr>
+    @foreach (var t in ViewBag.results)
+    {
+        <tr>
+            <td></td>
+            <td></td>
+            <td>@t.Mark</td>
+            <td>@t.Date</td>
+            <td>
+            <a class="btn btn-outline-info" asp-action="ShowResult" asp-controller="UserTest">Просмотреть</a>
+                </td>
+
+        </tr>
+        
+    }
+</table>
+    }
+

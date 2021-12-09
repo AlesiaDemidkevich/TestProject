@@ -41,6 +41,11 @@ namespace TestProject.Controllers
                 return View();
         }
 
+        public IActionResult AllResult()
+        {
+            ViewBag.results = db.Results.ToList();
+            return View("UserResult");
+        }
 
         public async Task<IActionResult> GetPage(string URL, int subject)
         {

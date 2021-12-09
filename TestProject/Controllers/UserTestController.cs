@@ -41,6 +41,13 @@ namespace TestProject.Controllers
             return View("UserTest");
         }
 
+        public IActionResult ShowResult(int subId, int variant)
+        {
+            TestViewModel testViewModel = GetTest(subId, variant);
+            ViewBag.testView = testViewModel;
+            return View("UserTest");
+        }
+
         public TestViewModel GetTest(int subId, int variant) {
             var subject = db.Subjects.Where(s => s.Id == subId).First().Name;
             var varName = db.Variants.Where(v => v.Id == variant).First().Name;
@@ -59,7 +66,7 @@ namespace TestProject.Controllers
                 qwList.Add(new QuestionViewModel { Text = k.Text, ImageUrl = k.ImageUrl, Type = k.Type, AnswerList = answers });
             }
 
-            TestViewModel testViewModel = new TestViewModel { Subject = subject, Variant = varName, QuestionList = qwList };
+            TestViewModel testViewModel = new TestViewModel { Subject = subject, Variant = varName, QuestionList = qwList, IdTest = testId };
             return testViewModel;
         }
 
@@ -125,8 +132,14 @@ namespace TestProject.Controllers
 
             }
 
-            
-            Result result = new Result {Mark = Math.Round(mark, MidpointRounding.AwayFromZero), test = allTestViewModel };
+            string idUser = getCurrentUserId();
+            DateTime date = DateTime.Now;
+
+            Result result = new Result {Mark = Math.Round(mark, MidpointRounding.AwayFromZero), IdTest = allTestViewModel.IdTest, IdUser = idUser, Date = date};
+
+            db.Results.Add(result);
+            await db.SaveChangesAsync();
+
             ViewBag.result = result;
             return View("Result", ViewBag);
         }

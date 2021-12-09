@@ -15,8 +15,8 @@ namespace TestProject.ViewModels
         [Required]
         [Display(Name = "Subject")]
         public string Subject { get; set; }
-
         public string Variant { get; set; }
+        public int IdTest { get; set; }
 
         [NotMapped]
         public List<QuestionViewModel> QuestionList { get; set; }
