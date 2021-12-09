@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @model TestProject.ViewModels.ChangeRoleViewModel
-
+@{
+    ViewData["Title"] = "Изменение ролей";
+    ViewBag.Title = "Изменение ролей";
+}
 <h2>Изменение ролей для пользователя @Model.UserName</h2>
 
 <form asp-action="EditRole" method="post">

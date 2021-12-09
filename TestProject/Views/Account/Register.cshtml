@@ -1,16 +1,21 @@
 ﻿@model TestProject.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Регистрация";
+    ViewBag.Title = "Title";
+}
+
 <link rel="stylesheet" href="~/css/style.css">
 
 <div id="container">
     <form method="post" asp-controller="Account" asp-action="Register">
         <div asp-validation-summary="ModelOnly"></div>
         <div>
-            <label asp-for="UserName"></label><br />
+            <label asp-for="UserName">Логин</label><br />
             <input asp-for="UserName" class="field" />
 
         </div>
         <div>
-            <label asp-for="Password"></label><br />
+            <label asp-for="Password">Пароль</label><br />
             <input asp-for="Password" class="field" />
         </div>
 

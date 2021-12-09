@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TestProject.Models.User>
 @{
-    ViewBag.Title = "List of users";
+    ViewBag.Title = "Пользователи";
 }
 
 <div style="margin-bottom:20px">
@@ -9,7 +9,7 @@
 </div>
 
 <table class="table">
-    <tr><th>Email</th><th></th></tr>
+    <tr><th>Логин</th><th></th></tr>
 
     @foreach (var user in Model)
     {

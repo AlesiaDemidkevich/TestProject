@@ -65,21 +65,47 @@ namespace TestProject.Controllers
 
         public async Task<IActionResult> Test(TestViewModel testViewModel, string subject, string variant)
         {
+            float mark = 0;
+            float coef = 0;
+            float count = 0;
             var subId = db.Subjects.Where(s => s.Name == subject).First().Id;
             var varId = db.Variants.Where(v => v.Name == variant).First().Id;
             TestViewModel allTestViewModel = GetTest(subId, varId);
             allTestViewModel = SortTest(allTestViewModel);
 
+            for (int i = 0; i < allTestViewModel.QuestionList.Count; i++)
+            {
+                
+                for (int j = 0; j < allTestViewModel.QuestionList[i].AnswerList.Count; j++)
+                {
+                    if (allTestViewModel.QuestionList[i].AnswerList[j].isRight == true)
+                    {
+                        count++;
+                    }
+                }
+
+            }
+            coef = 100 / count; 
             for (int i=0;i<allTestViewModel.QuestionList.Count;i++){
 
-                for (int j = 0; j < allTestViewModel.QuestionList[i].AnswerList.Count; j++) { 
-                    
+                for (int j = 0; j < allTestViewModel.QuestionList[i].AnswerList.Count; j++) {
+                    if (allTestViewModel.QuestionList[i].Type == "A") {
+                        if (testViewModel.QuestionList[i].AnswerList[j].isChecked && allTestViewModel.QuestionList[i].AnswerList[j].isRight) {
+                            mark += coef;
+                        }
+                    }
+                    if (allTestViewModel.QuestionList[i].Type == "B") {
+                        if (allTestViewModel.QuestionList[i].AnswerList[j].Text.Equals(testViewModel.QuestionList[i].AnswerList[j].Text))
+                        {
+                            mark += coef;
+                        }
+                    }
                 }
 
             }
 
-
-            return View("UserTest", testViewModel);
+            ViewBag.mark = Math.Round(mark, MidpointRounding.AwayFromZero);
+            return View("Result", ViewBag);
         }
 
         public TestViewModel SortTest(TestViewModel testViewModel){

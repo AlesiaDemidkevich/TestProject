@@ -1,6 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
-    ViewBag.Title = "Title";
+    ViewData["Title"] = "Главная";
+    ViewBag.Title = "Главная";
 }
 <link rel="stylesheet" type="text/css" href="~/css/pageHome.css" />
 <body>
@@ -16,7 +16,7 @@
         <input type="radio" id="Технические" name="type" onchange="checkRadio(id)">
         <label for="r1" style="margin:2px 5px 2px 2px">Технические</label>
         <input type="radio" id="Гуманитарные" name="type" onchange="checkRadio(id)">
-        <label for="r2" style="margin:2px 5px 2px 2px">Гуманитарнxые</label>
+        <label for="r2" style="margin:2px 5px 2px 2px">Гуманитарные</label>
         <input type="radio" id="Естественные" name="type" onchange="checkRadio(id)">
         <label for="r3" style="margin:2px 5px 2px 2px">Естественные</label>
     </form>
@@ -49,8 +49,8 @@
         </table>
     </div>
 
-}
-else
+ }
+ else
 {
     <h1 class="page-header text-center">Тесты онлайн</h1>
     <p class="text-center lead">
@@ -64,7 +64,7 @@ else
         
         $.ajax({
             type: "get",
-            url: '@Url.Action("Sort","Home")',
+            url: '@Url.Action("Sort", "Home")',
             data: { id: id },
             timeout: 1000,
             success: function (response) {

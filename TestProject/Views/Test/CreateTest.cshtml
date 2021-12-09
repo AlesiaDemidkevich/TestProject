@@ -1,9 +1,9 @@
 ﻿@model TestProject.ViewModels.TestViewModel
 @{
-    ViewBag.Title = "Create test";
+    ViewBag.Title = "Создание теста";
 }
 <link rel="stylesheet" type="text/css" href="~/css/page.css" />
-<form method="post" asp-controller="Test" asp-action="Create" id="container" style="position: relative; padding-bottom: 50px;" enctype="multipart/form-data">
+<form method="post" asp-controller="Test" asp-action="Create" id="container" style="position: relative; padding-bottom: 100px;" enctype="multipart/form-data">
     <div class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Subject" class="control-label">Предмет</label>
@@ -34,9 +34,11 @@
             <button onclick="return delAnsw(this)" class="btn btn-outline-danger" id="w1" style="margin-top:5px">Удалить</button>
         </div>
     </div>
-    <input type="button" onclick="duplicate()" id="addQuestion" class="btn btn-outline-info" value="Добавить вопрос" style="margin-top:35px; margin-bottom:10px" />
     <div class="form-group">
-        <input type="submit" value="Создать" class="btn btn-outline-secondary" style="margin-top:30px; bottom:0px; position:absolute" />
+        <input type="button" onclick="duplicate()" id="addQuestion" class="btn btn-outline-info" value="Добавить вопрос" style="margin-top:35px; margin-bottom:10px; bottom:40px; position:absolute" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-outline-secondary" style="margin-top: 30px; bottom: 0px; position: absolute " />
     </div>
 </form>
 <script src="~/js/duplicate.js">

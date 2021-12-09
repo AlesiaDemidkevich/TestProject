@@ -1,18 +1,21 @@
-﻿@model TestProject.ViewModels.TestViewModel 
-
+﻿@model TestProject.ViewModels.TestViewModel
+@{
+    ViewData["Title"] = @ViewBag.testView.Subject;
+}
 <h1 class="page-header text-center" name="Subject">@ViewBag.testView.Subject</h1>
 <div id="container">
     <form asp-controller="UserTest" asp-action="Test" asp-route-subject="@ViewBag.testView.Subject" asp-route-variant="@ViewBag.testView.Variant" method="post">
         @{ int i = 0;
             int k = 0;
             int a = 0;
-            int b = 0;}
+            int b = 0;
+            int num2 = 0;}
         <h3 style="margin:20px">Часть A</h3>
         @foreach (var test in @ViewBag.testView.QuestionList)
         {
             @if (test.Type == "A")
             {
-                int num = i+1;
+                int num = i + 1;
                 <h4 class="page-header text-center" style="margin:10px">А @num</h4>
                 <div id="question">
                     @test.Text
@@ -20,19 +23,19 @@
                 @if (test.ImageUrl != null)
                 {
                     <div id="img">
-                        <img src="@test.ImageUrl" style="width:200px; height:140px"/>
+                        <img src="@test.ImageUrl" style="width:200px; height:140px" />
                     </div>
                 }
 
-    <div id="answers" style="margin:30px">
-        @foreach (var answer in test.AnswerList)
-        {
-            <input type="checkbox" id="@i" asp-for="@Model.QuestionList[i].AnswerList[a].isChecked" value="True">
-            <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</lable><br />
-            a++;
-        }
+                <div id="answers" style="margin:30px">
+                    @foreach (var answer in test.AnswerList)
+                    {
+                        <input type="checkbox" id="@i" asp-for="@Model.QuestionList[i].AnswerList[a].isChecked" value="True">
+                        <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</lable><br />
+                        a++;
+                    }
 
-    </div>
+                </div>
                 a = 0;
                 i++;
             }
@@ -44,7 +47,7 @@
             k = i;
             if (test.Type == "B")
             {
-                int num2 = k + 1;
+                num2 ++;
                 <h4 class="page-header text-center" style="margin:10px">B @num2</h4>
                 <div id="question">
                     @test.Text
@@ -52,21 +55,21 @@
                 @if (test.ImageUrl != null)
                 {
                     <div id="img">
-                        <img src="@test.ImageUrl" style="width:200px; height:140px"/>
-                    </div>  
+                        <img src="@test.ImageUrl" style="width:200px; height:140px" />
+                    </div>
                 }
 
                 <div id="answers" style="margin:30px">
                     Ответ:
-                     <br />
-                     <input type="text" name="QuestionList[@k].AnswerList[@b].text" >
-                          @{
-                              b++;
-                              k++;
-                            }
-                 </div>
+                    <br />
+                    <input type="text" name="QuestionList[@k].AnswerList[@b].text">
+                    @{
+                        b++;
+                        k++;
+                    }
+                </div>
             }
-         }
+        }
         <div class="form-group">
             <input type="submit" value="Завершить тест" class="btn btn-outline-primary" />
         </div>
@@ -75,18 +78,6 @@
 </div>
 <script>
 
-    @*function endTest() {
-
-         $.ajax({
-            type: "get",
-            url: '@Url.Action("Test","UserTest")',
-            data: { id: id },
-            timeout: 1000,
-            success: function (response) {
-                $('#results').html(response);
-        }
-        });
-    }*@
-
+   
 
 </script>

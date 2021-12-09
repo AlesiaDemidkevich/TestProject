@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Результат";
+    ViewBag.Title = "Результат";
+}
+<div>
+    @{
+        if (@Model.mark <= 35)
+        {
+        <h1> @Model.mark% Ну ты и тупой!</h1>
+        }
+        else if (@Model.mark > 35 && @Model.mark <= 70)
+        {
+        <h1>@Model.mark% Нормально!</h1>
+        }
+        else if (@Model.mark > 70)
+        {
+        <h1>@Model.mark% Красавчик!</h1>
+        }
+    }
+
+</div>

@@ -1,11 +1,11 @@
 ﻿@model TestProject.ViewModels.CreateUserViewModel
 @{
-    ViewBag.Title = "Create user";
+    ViewBag.Title = "Создание пользователя";
 }
 <form asp-action="Create" asp-controller="Users">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="UserName" class="control-label">Login</label>
+        <label asp-for="UserName" class="control-label">Логин</label>
         <input type="text" asp-for="UserName" class="form-control" />
     </div>
     <div class="form-group">
