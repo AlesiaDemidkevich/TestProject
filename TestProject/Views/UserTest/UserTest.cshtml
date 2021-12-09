@@ -71,13 +71,26 @@
             }
         }
         <div class="form-group">
-            <input type="submit" value="Завершить тест" class="btn btn-outline-primary" />
+            <input id="save" type="submit" value="Завершить тест" class="btn btn-outline-primary" />
         </div>
     </form>
     <br />
 </div>
-<script>
+@*<script>
 
-   
+    var test = document.getElementById('save');
+    test.onclick = function () {
+        document.cookie = 'test=' + @ViewBag.testView + '; path=/;';
+    };
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    cookie = getCookie('test');
+    if (cookie) {
+        @ViewBag.testView = cookie;
+    }
 
-</script>
+</script>*@

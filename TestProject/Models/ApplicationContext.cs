@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TestProject.ViewModels;
 
 namespace TestProject.Models
 {
@@ -17,6 +19,20 @@ namespace TestProject.Models
             : base(options)
         {
             Database.EnsureCreated();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<QuestionViewModel>()
+            .HasNoKey()
+            .ToView("Index");
+
+            modelBuilder.Entity<TestViewModel>()
+            .HasNoKey()
+            .ToView("CreateTest");
+
+
         }
     }
 }

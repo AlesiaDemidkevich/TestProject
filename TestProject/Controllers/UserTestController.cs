@@ -65,9 +65,9 @@ namespace TestProject.Controllers
 
         public async Task<IActionResult> Test(TestViewModel testViewModel, string subject, string variant)
         {
-            float mark = 0;
-            float coef = 0;
-            float count = 0;
+            double mark = 0;
+            double coef = 0;
+            double count = 0;
             var subId = db.Subjects.Where(s => s.Name == subject).First().Id;
             var varId = db.Variants.Where(v => v.Name == variant).First().Id;
             TestViewModel allTestViewModel = GetTest(subId, varId);
@@ -104,7 +104,30 @@ namespace TestProject.Controllers
 
             }
 
-            ViewBag.mark = Math.Round(mark, MidpointRounding.AwayFromZero);
+            for (int i = 0; i < allTestViewModel.QuestionList.Count; i++)
+            {
+
+                for (int j = 0; j < allTestViewModel.QuestionList[i].AnswerList.Count; j++)
+                {
+                    if (allTestViewModel.QuestionList[i].Type == "A")
+                    {
+                        if (testViewModel.QuestionList[i].AnswerList[j].isChecked)
+                        {
+                            allTestViewModel.QuestionList[i].AnswerList[j].isChecked = true;
+                        }
+                    }
+                    if (allTestViewModel.QuestionList[i].Type == "B")
+                    {
+                        allTestViewModel.QuestionList[i].AnswerList[j].UserText = testViewModel.QuestionList[i].AnswerList[j].Text;
+                        
+                    }
+                }
+
+            }
+
+            
+            Result result = new Result {Mark = Math.Round(mark, MidpointRounding.AwayFromZero), test = allTestViewModel };
+            ViewBag.result = result;
             return View("Result", ViewBag);
         }
 

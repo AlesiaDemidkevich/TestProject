@@ -12,5 +12,6 @@ namespace TestProject.Models
         public int IdQuestion { get; set; }
         public bool isRight { get; set; } = false;
         public bool isChecked { get; set; } = false;
+        public string UserText { get; set; }
     }
 }

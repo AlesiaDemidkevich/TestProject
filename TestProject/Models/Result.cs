@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using TestProject.ViewModels;
 
 namespace TestProject.Models
 {
@@ -9,9 +11,9 @@ namespace TestProject.Models
     {
         public int Id { get; set; }
         public int IdUser { get; set; }
-        public int IdUserAnswer { get; set; }
-        public int IdTest { get; set; }
-        public float Mark { get; set; }
+        [NotMapped]
+        public TestViewModel test { get; set; }
+        public double Mark { get; set; }
         public DateTime Date { get; set; }
     }
 }
