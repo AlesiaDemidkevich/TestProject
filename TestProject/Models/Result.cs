@@ -11,8 +11,9 @@ namespace TestProject.Models
     {
         public int Id { get; set; }
         public string IdUser { get; set; }
-        [NotMapped]
-        public TestViewModel test { get; set; }
+        
+
+
         public int IdTest { get; set; }
         public double Mark { get; set; }
         public DateTime Date { get; set; }

@@ -48,6 +48,7 @@ namespace TestProject.Controllers
             return View("UserTest");
         }
 
+
         public TestViewModel GetTest(int subId, int variant) {
             var subject = db.Subjects.Where(s => s.Id == subId).First().Name;
             var varName = db.Variants.Where(v => v.Id == variant).First().Name;
@@ -55,18 +56,34 @@ namespace TestProject.Controllers
             var questions = db.Questions.Where(q => q.IdSubject == subId && q.IdTest == testId).ToList();
 
             List<QuestionViewModel> qwList = new List<QuestionViewModel>();
+            
+           
             foreach (var k in questions)
             {
-
+                List<QuestionAnswerViewModel> qwestionAnswerList = new List<QuestionAnswerViewModel>();
                 var answers = (from answ in db.QuestionAnswers
                                join quest in db.Questions on answ.IdQuestion equals quest.Id
                                join test in db.Tests on quest.IdTest equals test.Id
                                where test.Id == testId && quest.Id == k.Id
                                select answ).ToList();
-                qwList.Add(new QuestionViewModel { Text = k.Text, ImageUrl = k.ImageUrl, Type = k.Type, AnswerList = answers });
-            }
 
-            TestViewModel testViewModel = new TestViewModel { Subject = subject, Variant = varName, QuestionList = qwList, IdTest = testId };
+                foreach (var a in answers)
+                {
+                    QuestionAnswerViewModel item = new QuestionAnswerViewModel();
+                    item.Id = a.Id;
+                    item.IdQuestion = a.IdQuestion;
+                    item.isChecked = a.isChecked;
+                    item.isRight = a.isRight;
+                    item.Text = a.Text;
+                    item.UserText = a.UserText;
+                    qwestionAnswerList.Add(item);
+
+                }
+                qwList.Add(new QuestionViewModel { Text = k.Text, ImageUrl = k.ImageUrl, Type = k.Type, AnswerList = qwestionAnswerList });
+            }
+            
+
+                TestViewModel testViewModel = new TestViewModel { Subject = subject, Variant = varName, QuestionList = qwList, IdTest = testId };
             return testViewModel;
         }
 
@@ -79,6 +96,7 @@ namespace TestProject.Controllers
             var varId = db.Variants.Where(v => v.Name == variant).First().Id;
             TestViewModel allTestViewModel = GetTest(subId, varId);
             allTestViewModel = SortTest(allTestViewModel);
+            TestViewModel userTestViewModel = allTestViewModel;
 
             for (int i = 0; i < allTestViewModel.QuestionList.Count; i++)
             {
@@ -135,15 +153,18 @@ namespace TestProject.Controllers
             string idUser = getCurrentUserId();
             DateTime date = DateTime.Now;
 
-            Result result = new Result {Mark = Math.Round(mark, MidpointRounding.AwayFromZero),test = allTestViewModel, IdTest = allTestViewModel.IdTest, IdUser = idUser, Date = date};
+            ResultViewModel resultVM = new ResultViewModel {Mark = Math.Round(mark, MidpointRounding.AwayFromZero),test = allTestViewModel, IdTest = allTestViewModel.IdTest, IdUser = idUser, Date = date};
+            ViewBag.result = resultVM;
+            allTestViewModel = userTestViewModel;
+            
+            Result result = new Result { Mark = Math.Round(mark, MidpointRounding.AwayFromZero), IdUser = idUser, Date = date, IdTest = allTestViewModel.IdTest };
+            db.Results.Add(result);
+            await db.SaveChangesAsync();
 
-            //db.Results.Add(result);
-            //await db.SaveChangesAsync();
-
-            ViewBag.result = result;
             return View("Result", ViewBag);
+            
         }
-
+       
         public TestViewModel SortTest(TestViewModel testViewModel){
             List<QuestionViewModel> questionList = new List<QuestionViewModel>();
 

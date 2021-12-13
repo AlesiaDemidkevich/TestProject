@@ -12,6 +12,10 @@ namespace TestProject.ViewModels
         public string IdUser { get; set; }
         [NotMapped]
         public TestViewModel test { get; set; }
+        public int IdTest { get; set; }
+
+        public string Subject { get; set; }
+        public string Variant { get; set; }
         public double Mark { get; set; }
         public DateTime Date { get; set; }
     }

@@ -41,9 +41,42 @@ namespace TestProject.Controllers
                 return View();
         }
 
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteResult(int id)
+        {
+            var result = await db.Results.FindAsync(id);
+
+            if (result != null)
+            {
+                db.Results.Remove(result);
+                await db.SaveChangesAsync();
+            }
+            
+            return RedirectToAction("AllResult");
+        }
+
+
         public IActionResult AllResult()
         {
-            ViewBag.results = db.Results.ToList();
+            string idUser = getCurrentUserId();
+            var res = db.Results.Where(t=>t.IdUser==idUser).ToList();
+            List<ResultViewModel> results = new List<ResultViewModel>();
+            foreach (var r in res) {
+                var subject = (from sub in db.Subjects
+                               join test in db.Tests on sub.Id equals test.IdSubject
+                               where test.Id == r.IdTest
+                               select sub).First().Name;
+
+                var variant = (from var in db.Variants
+                               join test in db.Tests on var.Id equals test.IdVariant
+                               where test.Id == r.IdTest
+                               select var).First().Name;
+                ResultViewModel result = new ResultViewModel { Id = r.Id, IdUser = r.IdUser, IdTest = r.IdTest, Subject = subject, Variant = variant, Mark = r.Mark, Date = r.Date};
+                results.Add(result);
+            }
+                       
+            ViewBag.results = results;
             return View("UserResult");
         }
 

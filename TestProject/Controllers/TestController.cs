@@ -88,7 +88,7 @@ namespace TestProject.Controllers
                         var img = LoadImage(i.ImageUrlFile);
                         i.ImageUrl = img;
                         Question question = new Question { Text = i.Text, ImageUrl = i.ImageUrl, IdSubject = idSubject, IdTest = idTest, Type = i.Type };
-                        ICollection<QuestionAnswer> questionAnswerList = i.AnswerList;
+                        ICollection<QuestionAnswerViewModel> questionAnswerList = i.AnswerList;
                         db.Questions.Add(question);
                         await db.SaveChangesAsync();
 

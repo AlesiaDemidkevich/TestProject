@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Мои тесты";
 }
-@model TestProject.Models.Result
+@model TestProject.ViewModels.ResultViewModel
 
 
     @if (ViewBag.results != null)
@@ -16,16 +16,22 @@
     </tr>
     @foreach (var t in ViewBag.results)
     {
-        <tr>
-            <td></td>
-            <td></td>
-            <td>@t.Mark</td>
-            <td>@t.Date</td>
-            <td>
-            <a class="btn btn-outline-info" asp-action="ShowResult" asp-controller="UserTest">Просмотреть</a>
-                </td>
-
-        </tr>
+<tr>
+    
+    <td>@t.Subject</td>
+    <td>@t.Variant</td>
+    <td>@t.Mark%</td>
+    <td>@t.Date.ToShortDateString()</td>
+    <td>        
+        <form style="float:right" asp-action="DeleteResult" asp-route-id="@t.Id" method="post">
+            <a class="btn btn-outline-info" asp-action="ShowResult" asp-controller="UserTest" >Просмотреть</a>
+            <button type="submit" class="btn btn-outline-danger">
+                Удалить
+            </button>
+        </form>
+</td>
+    
+</tr>
         
     }
 </table>

@@ -21,7 +21,7 @@ namespace TestProject.ViewModels
 
         public string Type { get; set; }
         [NotMapped]
-        public List<QuestionAnswer> AnswerList { get; set; }
+        public List<QuestionAnswerViewModel> AnswerList { get; set; }
 
         public string ImageUrl { get; set; }
 
