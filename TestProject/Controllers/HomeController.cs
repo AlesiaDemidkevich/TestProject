@@ -112,12 +112,12 @@ namespace TestProject.Controllers
                     cnt += "</tr>";
                 }
 
-                    return new ContentResult
+                return new ContentResult
                 {
                     ContentType = "text/html",
                     StatusCode = (int)HttpStatusCode.OK,
                     Content = cnt
-                    };
+                };
             }
         }
 

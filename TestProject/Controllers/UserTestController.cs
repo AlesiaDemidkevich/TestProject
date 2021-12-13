@@ -135,10 +135,10 @@ namespace TestProject.Controllers
             string idUser = getCurrentUserId();
             DateTime date = DateTime.Now;
 
-            Result result = new Result {Mark = Math.Round(mark, MidpointRounding.AwayFromZero), IdTest = allTestViewModel.IdTest, IdUser = idUser, Date = date};
+            Result result = new Result {Mark = Math.Round(mark, MidpointRounding.AwayFromZero),test = allTestViewModel, IdTest = allTestViewModel.IdTest, IdUser = idUser, Date = date};
 
-            db.Results.Add(result);
-            await db.SaveChangesAsync();
+            //db.Results.Add(result);
+            //await db.SaveChangesAsync();
 
             ViewBag.result = result;
             return View("Result", ViewBag);

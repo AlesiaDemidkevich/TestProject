@@ -57,53 +57,62 @@ namespace TestProject.Controllers
         
         public ActionResult CreateTest()
         {
-            List<Subject> subjectList = db.Subjects.ToList();
+            if (User.IsInRole("admin"))
+            {
+                List<Subject> subjectList = db.Subjects.ToList();
             ViewBag.subjects = subjectList;
             return View();
+            }
+            else
+            {
+                return StatusCode(403);
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(TestViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                int idSubject = db.Subjects.Where(p => p.Name == model.Subject).First().Id;
-                int countVariant = db.Tests.Where(v => v.IdSubject == idSubject).Count();
-                ICollection<QuestionViewModel> questionList = model.QuestionList;
-
-                Test test = new Test { IdSubject = idSubject, IdVariant = countVariant + 1 };
-                db.Tests.Add(test);
-                await db.SaveChangesAsync();
-                int idTest = db.Tests.OrderByDescending(u => u.Id).First().Id;
-                foreach (var i in questionList)
+            
+                if (ModelState.IsValid)
                 {
-                    var img = LoadImage(i.ImageUrlFile);
-                    i.ImageUrl = img;
-                    Question question = new Question { Text = i.Text, ImageUrl = i.ImageUrl, IdSubject = idSubject, IdTest = idTest, Type=i.Type };
-                    ICollection<QuestionAnswer> questionAnswerList = i.AnswerList;
-                    db.Questions.Add(question);
+                    int idSubject = db.Subjects.Where(p => p.Name == model.Subject).First().Id;
+                    int countVariant = db.Tests.Where(v => v.IdSubject == idSubject).Count();
+                    ICollection<QuestionViewModel> questionList = model.QuestionList;
+
+                    Test test = new Test { IdSubject = idSubject, IdVariant = countVariant + 1 };
+                    db.Tests.Add(test);
                     await db.SaveChangesAsync();
-
-                    int idQuestion = db.Questions.OrderByDescending(u => u.Id).First().Id;
-
-                    foreach (var a in questionAnswerList)
+                    int idTest = db.Tests.OrderByDescending(u => u.Id).First().Id;
+                    foreach (var i in questionList)
                     {
-
-                        QuestionAnswer questionAnswer = new QuestionAnswer { Text = a.Text, IdQuestion = idQuestion, isRight = a.isRight };
-                        db.QuestionAnswers.Add(questionAnswer);
+                        var img = LoadImage(i.ImageUrlFile);
+                        i.ImageUrl = img;
+                        Question question = new Question { Text = i.Text, ImageUrl = i.ImageUrl, IdSubject = idSubject, IdTest = idTest, Type = i.Type };
+                        ICollection<QuestionAnswer> questionAnswerList = i.AnswerList;
+                        db.Questions.Add(question);
                         await db.SaveChangesAsync();
 
+                        int idQuestion = db.Questions.OrderByDescending(u => u.Id).First().Id;
+
+                        foreach (var a in questionAnswerList)
+                        {
+
+                            QuestionAnswer questionAnswer = new QuestionAnswer { Text = a.Text, IdQuestion = idQuestion, isRight = a.isRight };
+                            db.QuestionAnswers.Add(questionAnswer);
+                            await db.SaveChangesAsync();
+
+                        }
+
                     }
+                    return RedirectToAction("CreateTest");
+                }
+                else
+                {
+
+                    return RedirectToAction("CreateTest");
 
                 }
-                return RedirectToAction("CreateTest");
-            }
-            else
-            {
-
-                return RedirectToAction("CreateTest");
-
-            }            
+            
             
         }
     }

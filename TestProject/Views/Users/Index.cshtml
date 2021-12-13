@@ -13,6 +13,8 @@
 
     @foreach (var user in Model)
     {
+        if (user.UserName != "Administrator")
+        {
         <tr>
             <td>@user.UserName</td>
             <td>
@@ -25,5 +27,6 @@
                 </form>
             </td>
         </tr>
+        }
     }
 </table>
