@@ -48,10 +48,17 @@ namespace TestProject.Controllers
             else return null;
         }
 
-        // GET: TestController
+        
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole("admin"))
+            {
+                return View();
+            }
+            else
+            {
+                return StatusCode(403);
+            }
         }
 
         

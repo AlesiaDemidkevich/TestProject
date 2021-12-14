@@ -22,47 +22,82 @@ namespace TestProject.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Index() => View(_userManager.Users.ToList());
+        public IActionResult Index() {
+            if (User.IsInRole("admin"))
+            {
+                return View(_userManager.Users.ToList());
+            }
+            else
+            {
+                return StatusCode(403);
+            }
+        }
 
-        public IActionResult Create() => View();
+        public IActionResult Create() {
+            if (User.IsInRole("admin"))
+            {
+                return View();
+            }
+            else
+            {
+                return StatusCode(403);
+            }
+
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserViewModel model)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("admin"))
             {
-                User user = new User { Email = model.UserName + "@gmail.com", UserName = model.UserName };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
+                    User user = new User { Email = model.UserName + "@gmail.com", UserName = model.UserName };
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
                     {
-                        ModelState.AddModelError(string.Empty, error.Description);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
                     }
                 }
+                return View(model);
             }
-            return View(model);
+            else
+            {
+                return StatusCode(403);
+            }
         }
 
         public async Task<IActionResult> Edit(string id)
         {
-            User user = await _userManager.FindByIdAsync(id);
+            if (User.IsInRole("admin"))
+            {
+                User user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
             EditUserViewModel model = new EditUserViewModel { Id = user.Id, UserName = user.UserName };
             return View(model);
+            }
+            else
+            {
+                return StatusCode(403);
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("admin"))
+            {
+                if (ModelState.IsValid)
             {
                 User user = await _userManager.FindByIdAsync(model.Id);
                 if (user != null)
@@ -85,6 +120,11 @@ namespace TestProject.Controllers
                 }
             }
             return View(model);
+            }
+            else
+            {
+                return StatusCode(403);
+            }
         }
 
         [HttpPost]
@@ -102,11 +142,13 @@ namespace TestProject.Controllers
 
         public async Task<IActionResult> EditRole(string userId)
         {
-            // получаем пользователя
-            User user = await _userManager.FindByIdAsync(userId);
+            if (User.IsInRole("admin"))
+            {
+                
+                User user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
-                // получем список ролей пользователя
+                
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var allRoles = _roleManager.Roles.ToList();
                 ChangeRoleViewModel model = new ChangeRoleViewModel
@@ -121,6 +163,11 @@ namespace TestProject.Controllers
             }
 
             return NotFound();
+            }
+            else
+            {
+                return StatusCode(403);
+            }
         }
         [HttpPost]
         public async Task<IActionResult> EditRole(string userId, List<string> roles)

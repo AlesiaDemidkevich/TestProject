@@ -1,5 +1,7 @@
 ﻿var i = 1;
+var countSelect = document.getElementsByClassName('btnch').length;
 function duplicate() {
+    
     var original = document.getElementById('container')
     let div = document.createElement('div');
     div.className = "form-group border border-5 rounded p-2";
@@ -9,7 +11,7 @@ function duplicate() {
     lab.className = "control-label";
     lab.setAttribute('asp-for', 'QuestionText');
     lab.setAttribute('style', 'display:inline-block; margin:7px 5px 7px 0px;');
-    lab.innerHTML = 'Вопрос ' + i;   
+    lab.innerHTML = 'Вопрос ' + i;
 
     let divCh = document.createElement('div');
     let idq = i - 1;
@@ -17,19 +19,15 @@ function duplicate() {
     let file = document.createElement('input');
     let fileId = 'QuestionList[' + idq + '].imageUrlFile';
     file.setAttribute('name', fileId)
-    file.type = "file";    
+    file.type = "file";
     file.size = "60";
 
-    let sel = document.createElement("select");
-    sel.id = "t" + i;
-    sel.options[0] = new Option('Часть A', 'A');
-    sel.options[1] = new Option('Часть B', 'B');
-    let name = 'QuestionList[' + idq + '].Type';
-    sel.setAttribute('name', name);
+   
+
 
     let inp = document.createElement('input');
     inp.className = "form-control";
-    inp.setAttribute('type', 'text');    
+    inp.setAttribute('type', 'text');
     let nameId = 'QuestionList[' + idq + '].text';
     inp.setAttribute('name', nameId);
     inp.setAttribute('style', 'float:left; display:inline-block; width:90%; margin:0px 16px 10px 0px;');
@@ -50,6 +48,17 @@ function duplicate() {
     inpAdd.setAttribute('style', 'margin:7px 5px 7px 5px');
     inpAdd.innerText = "Добавить"
 
+    let sel = document.createElement("select");
+    sel.id = "t" + i;
+    sel.options[0] = new Option('Часть A', 'A');
+    sel.options[1] = new Option('Часть B', 'B');
+    let name = 'QuestionList[' + idq + '].Type';
+    sel.setAttribute('name', name);
+    sel.setAttribute('class', 'btnch');
+    //sel.onchange = function () {
+    //    return setListener(inpAdd);
+    //}
+
     let inpDel = document.createElement('button');
     inpDel.className = "btn btn-outline-danger";
     inpDel.id = i;
@@ -68,9 +77,17 @@ function duplicate() {
     div.appendChild(inpAdd);
     original.appendChild(div);
 
+    
     return add(inpAdd);
+    
 
 }
+
+//function setListener(button) {
+//    console.log("A");
+//    return false;
+//}
+
 
 function del(button) {
     let l = button.id;
@@ -81,7 +98,7 @@ function del(button) {
 
 var k = 1;
 var singl = 0;
-function add(button) {    
+function add(button) {
 
     let currId = button.id.substr(1, 1);
     let questId = currId - 1;
@@ -101,12 +118,12 @@ function add(button) {
     inp.setAttribute('type', 'text');
     inp.setAttribute('style', 'float: left; display: inline-block; width: 77%; margin:5px 20px 0px 65px');
     inp.id = "a" + k;
-        let count = parent.getElementsByClassName('count').length;
-        let nameId = 'QuestionList[' + questId + '].AnswerList[' + count + '].text';
-        inp.setAttribute('name', nameId)
-        let checkId = 'QuestionList[' + questId + '].AnswerList[' + count + '].isRight';
-        check.setAttribute('name', checkId);
- 
+    let count = parent.getElementsByClassName('count').length;
+    let nameId = 'QuestionList[' + questId + '].AnswerList[' + count + '].text';
+    inp.setAttribute('name', nameId)
+    let checkId = 'QuestionList[' + questId + '].AnswerList[' + count + '].isRight';
+    check.setAttribute('name', checkId);
+
     let labC = document.createElement('label');
     labC.className = "control-label";
     labC.setAttribute('style', 'margin:7px 5px 7px 8px');
@@ -140,13 +157,14 @@ function delAnsw(button) {
     return false;
 }
 
-function getAllAnswerForQuestion(parent,qId) {
+function getAllAnswerForQuestion(parent, qId) {
     let count = parent.getElementsByClassName('count').length;
     for (let i = 0; i < count; i++) {
         div = parent.getElementsByClassName('count');
-        let nameId = 'QuestionList[' + qId + '].AnswerList[' + i + '].text';        
+        let nameId = 'QuestionList[' + qId + '].AnswerList[' + i + '].text';
         div[i].setAttribute('name', nameId);
     }
     return false;
 }
+
 

@@ -37,8 +37,14 @@ namespace TestProject.Controllers
 
         public IActionResult Index()
         {
+            if (User.IsInRole("admin"))
+            {
+                return View("Index", "Users");
+            }
+            else {
                 ViewBag.subjects = db.Subjects.ToList();
                 return View();
+            }
         }
 
 
@@ -59,7 +65,9 @@ namespace TestProject.Controllers
 
         public IActionResult AllResult()
         {
-            string idUser = getCurrentUserId();
+            if (User.IsInRole("user"))
+            {
+                string idUser = getCurrentUserId();
             var res = db.Results.Where(t=>t.IdUser==idUser).ToList();
             List<ResultViewModel> results = new List<ResultViewModel>();
             foreach (var r in res) {
@@ -78,13 +86,25 @@ namespace TestProject.Controllers
                        
             ViewBag.results = results;
             return View("UserResult");
+            }
+            else
+            {
+                return StatusCode(403);
+            }
         }
 
         public async Task<IActionResult> GetPage(string URL, int subject)
         {
-            ViewBag.variants = db.Tests.Where(a => a.IdSubject == subject).ToList();
-            Subject sub = db.Subjects.Where(s => s.Id == subject).First();
-            return View(URL,sub);
+            if (User.IsInRole("user"))
+            {
+                ViewBag.variants = db.Tests.Where(a => a.IdSubject == subject).ToList();
+                Subject sub = db.Subjects.Where(s => s.Id == subject).First();
+                return View(URL, sub);
+            }
+            else
+            {
+                return StatusCode(403);
+            }
         }
 
         public IActionResult Sort(string id)

@@ -36,16 +36,30 @@ namespace TestProject.Controllers
         }
         public IActionResult Index(int subId, int variant)
         {
-            TestViewModel testViewModel = GetTest(subId,variant);
-            ViewBag.testView = testViewModel;
-            return View("UserTest");
-        }
+            if (User.IsInRole("user"))
+            {
+                TestViewModel testViewModel = GetTest(subId, variant);
+                ViewBag.testView = testViewModel;
+                return View("UserTest");
+            }
+            else
+            {
+                return StatusCode(403);
+            }
+            }
 
         public IActionResult ShowResult(int subId, int variant)
         {
-            TestViewModel testViewModel = GetTest(subId, variant);
+            if (User.IsInRole("user"))
+            {
+                TestViewModel testViewModel = GetTest(subId, variant);
             ViewBag.testView = testViewModel;
-            return View("UserTest");
+            return View("UserTest"); 
+            }
+             else
+            {
+                return StatusCode(403);
+            }
         }
 
 
@@ -89,7 +103,9 @@ namespace TestProject.Controllers
 
         public async Task<IActionResult> Test(TestViewModel testViewModel, string subject, string variant)
         {
-            double mark = 0;
+            if (User.IsInRole("user"))
+            {
+                double mark = 0;
             double coef = 0;
             double count = 0;
             var subId = db.Subjects.Where(s => s.Name == subject).First().Id;
@@ -162,7 +178,12 @@ namespace TestProject.Controllers
             await db.SaveChangesAsync();
 
             return View("Result", ViewBag);
-            
+            }
+            else
+            {
+                return StatusCode(403);
+            }
+
         }
        
         public TestViewModel SortTest(TestViewModel testViewModel){
