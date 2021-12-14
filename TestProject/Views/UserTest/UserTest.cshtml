@@ -42,9 +42,10 @@
 
         }
         <h3 style="margin:20px">Часть B</h3>
+        @{ k = i;}
         @foreach (var test in @ViewBag.testView.QuestionList)
         {
-            k = i;
+            
             if (test.Type == "B")
             {
                 num2 ++;
@@ -65,11 +66,13 @@
                     <input type="text" name="QuestionList[@k].AnswerList[@b].text">
                     @{
                         b++;
-                        k++;
+
                     }
                 </div>
-            }
-        }
+                                b = 0;
+                                k++;
+                            }
+                        }
         <div class="form-group">
             <input id="save" type="submit" value="Завершить тест" class="btn btn-outline-primary" />
         </div>

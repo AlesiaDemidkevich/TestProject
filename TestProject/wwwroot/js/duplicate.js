@@ -1,5 +1,4 @@
 ﻿var i = 1;
-var countSelect = document.getElementsByClassName('btnch').length;
 function duplicate() {
     
     var original = document.getElementById('container')
@@ -22,7 +21,12 @@ function duplicate() {
     file.type = "file";
     file.size = "60";
 
-   
+    let sel = document.createElement("select");
+    sel.id = "t" + i;
+    sel.options[0] = new Option('Часть A', 'A');
+    sel.options[1] = new Option('Часть B', 'B');
+    let name = 'QuestionList[' + idq + '].Type';
+    sel.setAttribute('name', name);
 
 
     let inp = document.createElement('input');
@@ -47,18 +51,7 @@ function duplicate() {
     }
     inpAdd.setAttribute('style', 'margin:7px 5px 7px 5px');
     inpAdd.innerText = "Добавить"
-
-    let sel = document.createElement("select");
-    sel.id = "t" + i;
-    sel.options[0] = new Option('Часть A', 'A');
-    sel.options[1] = new Option('Часть B', 'B');
-    let name = 'QuestionList[' + idq + '].Type';
-    sel.setAttribute('name', name);
-    sel.setAttribute('class', 'btnch');
-    //sel.onchange = function () {
-    //    return setListener(inpAdd);
-    //}
-
+      
     let inpDel = document.createElement('button');
     inpDel.className = "btn btn-outline-danger";
     inpDel.id = i;
@@ -82,12 +75,6 @@ function duplicate() {
     
 
 }
-
-//function setListener(button) {
-//    console.log("A");
-//    return false;
-//}
-
 
 function del(button) {
     let l = button.id;
