@@ -29,7 +29,7 @@
         <button onclick="return add(this)" class="btn btn-outline-info" id="v1" style="margin:7px 5px 7px 5px">Добавить</button>
         <div id="answ1" class="count">
             <input type="text" name="QuestionList[0].AnswerList[0].text" class="form-control" id="a1" style="float: left; display: inline-block; width: 77%; margin:5px 20px 0px 65px" />
-            <input type="checkbox" name="QuestionList[0].AnswerList[0].isRight" value="True">
+            <input type="checkbox" name="QuestionList[0].AnswerList[0].isRight" value="True"  id="ch1">
             <lable class="control-label" style="margin:7px 5px 7px 0px">Верно</lable>
             <button onclick="return delAnsw(this)" class="btn btn-outline-danger" id="w1" style="margin-top:5px">Удалить</button>
         </div>
@@ -71,4 +71,16 @@
 
     subjectSelect.addEventListener("change", changeOption);
 
+
+    var sele = document.getElementById('t0');
+    var ch = document.getElementById('ch1');
+    sele.addEventListener("change", function () {
+        var but = document.getElementById('v1');
+        if (sele.value == "A") {
+            but.hidden = false;
+        }
+        else {
+            but.hidden = true;
+        }
+    });
 </script>

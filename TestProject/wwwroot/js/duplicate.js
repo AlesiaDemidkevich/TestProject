@@ -1,4 +1,5 @@
 ﻿var i = 1;
+
 function duplicate() {
     
     var original = document.getElementById('container')
@@ -27,6 +28,7 @@ function duplicate() {
     sel.options[1] = new Option('Часть B', 'B');
     let name = 'QuestionList[' + idq + '].Type';
     sel.setAttribute('name', name);
+    
 
 
     let inp = document.createElement('input');
@@ -70,11 +72,20 @@ function duplicate() {
     div.appendChild(inpAdd);
     original.appendChild(div);
 
-    
-    return add(inpAdd);
-    
+    sel.addEventListener("change", function () {
+        
+        if (sel.value == "A") {
+            inpAdd.hidden = false;
+        }
+        else {
+            inpAdd.hidden = true;
+        }
+    });
+
+    return add(inpAdd);    
 
 }
+
 
 function del(button) {
     let l = button.id;
@@ -99,6 +110,7 @@ function add(button) {
     let check = document.createElement('input');
     check.setAttribute('type', 'checkbox')
     check.setAttribute('value', 'true')
+    check.id = "ch" + k;
 
     let inp = document.createElement('input');
     inp.className = "form-control";
@@ -138,8 +150,6 @@ function delAnsw(button) {
     let k = button.id;
     div = document.getElementById('ans' + k);
     div.parentNode.removeChild(div);
-
-    //getAllAnswerForQuestion(div.parentNode, div.parentNode.id);
 
     return false;
 }
