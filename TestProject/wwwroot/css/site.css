@@ -1,16 +1,104 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+#page-top {
+    padding-bottom: 70px;
+}
+#header-wrapper {
+    min-width: 960px;
+    height: 88px;
+    background: transparent url(https://res.cloudinary.com/alesya/image/upload/v1649710658/Images/menu_fxjfx0.jpg) no-repeat top center;
+    background-size: 100%;
+    display: flex;
+}
+#header {
+    width: 1400px;
+    height: 90px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 70px;
+    z-index: 999;
+    display: inline-block;
+    display:flex;
+}
+#logo {
+    float: left;
+    position: absolute;
+    left: 0;
+    margin-top:10px;
+}
+#menu-wrapper {
+    display: flex;
+    position: absolute;
+    float: right;
+    bottom: 25px;
+    right: 0;
+    margin-right: 200px;
+}
 a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
+    font-size: 20px;
+    
+}
+    a.navbar-brand:hover {
+        color: #26212C;
+    }
+    /* Provide sufficient contrast against white background */
+a {
+    color: white;
+    font-weight: 700;
+    font-family: Arial;
+    
 }
 
-/* Provide sufficient contrast against white background */
-a {
-    color: #0366d6;
+input[type=text] {
+    border: 2px solid #4e4955;
+    font-family: Arial;
+    padding: 3px;
+    background: #e6e3e3;
 }
+
+
+.pressed-button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px 6px 4px 6px;
+    margin: 3px;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: white;
+    background: #555555;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    transition: .3s;
+}
+
+    .pressed-button:hover {
+        background: #e6e3e3;
+        box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+        color: #26212C;
+        transform: translateY(1px);
+    }
+
+.gradient-button {
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    transition: .5s;
+}
+
+    .gradient-button:hover {
+        background-position: right center;
+    }
 
 .btn-primary {
     color: #fff;
@@ -23,6 +111,7 @@ a {
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -63,6 +152,8 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    background: rgba(219, 219, 219, 0.7);
+    
 }
 
 .footer {

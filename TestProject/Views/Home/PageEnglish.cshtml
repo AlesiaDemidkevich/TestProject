@@ -10,37 +10,44 @@
 
 <div class="page-desc text-center">
     <div class="card-text frame">
-        <img src="https://res.cloudinary.com/alesya/image/upload/v1637824131/Images/angl_lm9rxn.jpg"></img>
-    </div>
-    <div class="card-test frame">
-        <div class="text-center lead visual_text">
-            Сборник содержит варианты тестовых заданий по английскому языку для подготовки к централизованному тестированию, разработанных в соответствии с программой вступительных испытаний, а также ответы к ним.
+        <div class="bubble">
+            <div class="rectangle">Английский язык</div>
+            <div class="triangle-l"></div>
+            <div class="triangle-r"></div>
+            <div class="info">
+                <img src="https://res.cloudinary.com/alesya/image/upload/v1649801918/Images/angl_ydrv3h.jpg">
+            </div>
+        </div>
+        </div>
+        <div class="card-test frame">
+            <div class="text-center lead visual_text">
+                Сборник содержит варианты тестовых заданий по английскому языку для подготовки к централизованному тестированию, разработанных в соответствии с программой вступительных испытаний, а также ответы к ним.
+            </div>
         </div>
     </div>
-</div>
-<br>
-<br>
-<h2 class="card-test__title text-center">ТЕСТЫ</h2>
+    <br>
+    <br>
+    <h2 class="card-test__title text-center">ТЕСТЫ</h2>
 
-<div class="card-test__text block-xs lead">
-    <p>
-        Каждый вариант содержит 60 заданий и состоит из части А (48 заданий) и части В (12 заданий).<br><br>
-    </p><h4>Часть А</h4><p>
-        В заданиях нужно выбрать один из предложенных вариантов ответа.<br><br>
-    </p><h4>Часть В</h4><p>
-        Задания предполагают самостоятельное изменение формы слова для включения его в предложение, заполнение пропусков в тексте, исключение из текста лишнего слова, перевод фрагмента предложения с русского языка на английский.
-    </p><br>
-</div>
-<div class="container">
-    <div class="row">
-
-        @foreach (var t in @ViewBag.variants)
-        {
-            <form class="col col-lg" method="post" asp-controller="UserTest" asp-action="Index" asp-route-subId=@Model.Id asp-route-variant=@t.IdVariant>
-                <input type="hidden" name="COURSE_ID" value="1" />
-                <input type="hidden" name="ID" />
-                <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант @t.IdVariant</button>
-            </form>
-        }
+    <div class="card-test__text block-xs lead">
+        <p>
+            Каждый вариант содержит 60 заданий и состоит из части А (48 заданий) и части В (12 заданий).<br><br>
+        </p><h4>Часть А</h4><p>
+            В заданиях нужно выбрать один из предложенных вариантов ответа.<br><br>
+        </p><h4>Часть В</h4><p>
+            Задания предполагают самостоятельное изменение формы слова для включения его в предложение, заполнение пропусков в тексте, исключение из текста лишнего слова, перевод фрагмента предложения с русского языка на английский.
+        </p><br>
     </div>
-</div>
+    <div class="container">
+        <div class="row">
+
+            @foreach (var t in @ViewBag.variants)
+            {
+                <form class="col col-lg" method="post" asp-controller="UserTest" asp-action="Index" asp-route-subId=@Model.Id asp-route-variant=@t.IdVariant>
+                    <input type="hidden" name="COURSE_ID" value="1" />
+                    <input type="hidden" name="ID" />
+                    <button class="btn btn-primary btn-lg" type="submit" name="next" value="Начать" title="Начать">Вариант @t.IdVariant</button>
+                </form>
+            }
+        </div>
+    </div>

@@ -5,25 +5,47 @@
 }
 
 <link rel="stylesheet" href="~/css/style.css">
+<link rel="stylesheet" href="~/css/site.css">
 
-<div id="container">
-        <form method="post" asp-controller="Account" asp-action="Login">
-            <div asp-validation-summary="ModelOnly"></div>
-            <div>
-                <label asp-for="UserName">Логин</label><br />
-                <input asp-for="UserName" class="field" />
+<div>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-b-20">
+                <form class="login100-form validate-form" method="post" asp-controller="Account" asp-action="Login">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <span class="login100-form-title m-b-20">
+                        Добро пожаловать!
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Введите логин">
+                        <label class="login-lable" asp-for="UserName">Логин</label>
+                        <input class="input100" asp-for="UserName">
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-35" data-validate="Введите пароль">
+                        <label class="login-lable" asp-for="Password">Пароль</label>
+                        <input class="input100" asp-for="Password">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <input class="login100-form-btn" type="submit" value="Войти" />
+                    </div>
+
+                    <ul class="login-more p-t-40">
+                        <li>
+                            <span class="txt1">
+                                Нет учетной записи?
+                            </span>
+
+                            <a asp-controller="Account" asp-action="Register" class="txt2">
+                                Зарегистрироваться
+                            </a>
+                        </li>
+                    </ul>
+                </form>
 
             </div>
-            <div>
-                <label asp-for="Password">Пароль</label><br />
-                <input asp-for="Password" class="field" />
-            </div>
-
-            <div class="pos">
-                <input class="btn btn-sm btn-primary" type="submit" value="Войти" />
-            </div>
-        </form>
+        </div>
     </div>
-
+</div>
 
 

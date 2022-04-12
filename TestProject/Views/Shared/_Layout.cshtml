@@ -8,67 +8,75 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
-                {
-                    <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
-                    <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Home" asp-action="AllResult" style="display: inline-block;">Мои результаты</a>
-                    <form method="post" asp-controller="Home" asp-action="SearchResult">
-                        <input type="text" name="search" placeholder="Введите предмет" style="float: left; width: 70%; margin:5px" />
-                        <button type="submit" class="searchb" style="float: left; display: inline-block; margin:5px">Найти</button>
-                    </form>
+    <div id="page-top">        
+        <div id="header-wrapper">            
+            <div id="header">
+                <div id="logo">
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                    {
+                        <img style="width:70px; height:70px; margin-right:120px" src="https://res.cloudinary.com/alesya/image/upload/v1649711110/Images/sova_ihryjq.png">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="AllResult">Мои результаты</a>
 
-                }
-                else if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
-                {
-                    <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Users" asp-action="Index">Главная</a>
-                }
-                else
-                {
-                    <a class="navbar-brand" class="stretched-link" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
 
-                }
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    }
+                    else if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                    {
+                        <img style="width: 70px; height: 70px; margin-right: 120px" src="https://res.cloudinary.com/alesya/image/upload/v1649711110/Images/sova_ihryjq.png">
+                        <a class="navbar-brand" asp-controller="Users" asp-action="Index">Главная</a>
+
+                    }
+                    else
+                    {
+                        <img style="width: 70px; height: 70px; margin-right: 120px; visibility:hidden" />
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+
+                    }
+                </div>
+                <div id="menu-wrapper">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form method="post" asp-controller="Home" asp-action="SearchResult">
+                            <input type="text" name="search" placeholder="Введите предмет" style="float: left; width: 70%; margin:5px" />
+                            <button type="submit" class="pressed-button" style="float: left">Найти</button>
+                        </form>
+
+                        <form method="post" asp-controller="Account" asp-action="Logout">
+                            <input class="pressed-button" type="submit" value="Выйти" />
+                        </form>
+
+                    }
+                    else
+                    {
+
+                        <form asp-controller="Account" asp-action="Login">
+                            <input class="pressed-button" type="submit" value="Войти" />
+                        </form>
+                        <form asp-controller="Account" asp-action="Register">
+                            <input class="pressed-button" type="submit" value="Регистрация" />
+                        </form>
+
+                    }
+                </div>
             </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div>@User.Identity.Name</div>
-                <form style="float:right; margin:10px" method="post" asp-controller="Account" asp-action="Logout">
-                    <input class="btn btn-outline-danger" type="submit" value="Выйти" />
-                </form>
-            }
-            else
-            {
-                <form style="float:right; margin:2px" asp-controller="Account" asp-action="Login">
-                    <input class="btn btn-outline-primary" type="submit" value="Войти" />
-                </form>
-                <form style="float:right; margin:10px" asp-controller="Account" asp-action="Register">
-                    <input class="btn btn-outline-primary" type="submit" value="Регистрация" />
-                </form>
-            }
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-            <div id="results"></div>
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        </div>
+                        <div class="container">
+                            <main role="main" class="pb-3">
+                                @RenderBody()
+                                <div id="results"></div>
+                            </main>
+                        </div>
+
+                        <footer class="border-top footer text-muted">
+                            <div class="container">
+
+                            </div>
+                        </footer>
+                        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                        <script src="~/js/site.js" asp-append-version="true"></script>
+                        @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
 <script>
