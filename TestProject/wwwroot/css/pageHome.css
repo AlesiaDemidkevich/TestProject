@@ -1,5 +1,5 @@
 ﻿td {
-    padding: 70px 80px 20px 20px;
+    padding: 70px 50px 20px 10px;
 }
 
 table {
@@ -23,7 +23,7 @@ img {
 }
 
 img.img-index{
-    width:400px !important;
+    width:360px !important;
     height: 320px;
 }
 
@@ -108,7 +108,84 @@ p.sub {
 .info {
     padding: 50px 25px 15px 25px;
 }
+.info h2 {
+    font-size: 20px;
+}
 
-    .info h2 {
-        font-size: 20px;
-    }
+
+.tabs {
+    display: -webkit-box;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 15px;
+}
+
+.tabs * {
+    z-index: 2;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.tab {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 54px;
+    width: 200px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-radius: 99px;
+    cursor: pointer;
+    -webkit-transition: color 0.15s ease-in;
+    transition: color 0.15s ease-in;
+    margin:0px 30px;
+}
+
+
+input[type="radio"]:checked + label {
+    color: white;
+}
+
+
+input[id="All"]:checked ~ .glider {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+input[id="r-1"]:checked ~ .glider {
+    -webkit-transform: translateX(125%);
+    transform: translateX(125%);
+}
+
+input[id="r-2"]:checked ~ .glider {
+    -webkit-transform: translateX(260%);
+    transform: translateX(260%);
+}
+
+input[id="r-3"]:checked ~ .glider {
+    -webkit-transform: translateX(390%);
+    transform: translateX(390%);
+}
+
+.glider {
+    position: absolute;
+    display: -webkit-box;
+    display: flex;
+    height: 54px;
+    width: 200px;
+    box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em rgba(2, 79, 74, 1);
+    background: linear-gradient(rgba(88, 166, 161, 1), rgba(4, 143, 134, 1), rgba(29, 89, 85, 1));
+    z-index: 1;
+    border-radius: 15px;
+    -webkit-transition: 0.25s ease-out;
+    transition: 0.25s ease-out;
+    margin: 0px 30px;
+}

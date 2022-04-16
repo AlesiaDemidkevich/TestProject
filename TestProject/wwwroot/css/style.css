@@ -273,8 +273,7 @@ p a:hover {
 .pressed-button2 {
     text-decoration: none;
     display: inline-block;
-    padding: 4px 6px 4px 6px;
-    margin: 5px;
+    padding: 6px 10px 6px 10px;
     border-radius: 4px;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
@@ -285,9 +284,9 @@ p a:hover {
 }
 
     .pressed-button2:hover {
-        background: #e6e3e3;
-        box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
-        color: #26212C;
+        background: #707070;
+        color: white;
         transform: translateY(1px);
+        text-decoration: none;
     }
                     

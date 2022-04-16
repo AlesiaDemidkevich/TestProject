@@ -3,6 +3,8 @@
     ViewBag.Title = "Главная";
 }
 <link rel="stylesheet" type="text/css" href="~/css/pageHome.css" />
+<link rel="stylesheet" type="text/css" href="~/css/result.css" />
+<link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
 <body>
 @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
 {
@@ -10,53 +12,54 @@
     <p class="text-center lead">
         В данном разделе нашего сайта вы можете пройти бесплатное онлайн-тестирование на основе отдельно взятых тестов из книг. Выполнив тест, вы сразу увидите свои результаты.
     </p>
-    <form id="sort" action="/Home/Index" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" method="post">
-        <input type="radio" id="All" name="type" onchange="checkRadio(id)" checked>
-        <label for="r3" style="margin:2px 5px 2px 2px">Все</label>
-        <input type="radio" id="Технические" name="type" onchange="checkRadio(id)">
-        <label for="r1" style="margin:2px 5px 2px 2px">Технические</label>
-        <input type="radio" id="Гуманитарные" name="type" onchange="checkRadio(id)">
-        <label for="r2" style="margin:2px 5px 2px 2px">Гуманитарные</label>
-        <input type="radio" id="Естественные" name="type" onchange="checkRadio(id)">
-        <label for="r3" style="margin:2px 5px 2px 2px">Естественные</label>
+    <form id="sort" class="tabs" action="/Home/Index" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" method="post">
+        <input type="radio" id="All" name="tabs" onchange="checkRadio(id)" checked>
+        <label class="tab" for="All">Все</label>
+        <input type="radio" id="r-1" name="tabs" onchange="checkRadio(id)">
+        <label class="tab" for="r-1">Технические</label>
+        <input type="radio" id="r-2" name="tabs" onchange="checkRadio(id)">
+        <label class="tab" for="r-2">Гуманитарные</label>
+        <input type="radio" id="r-3" name="tabs" onchange="checkRadio(id)">
+        <label class="tab" for="r-3">Естественные</label>
+        <span class="glider"></span>
     </form>
-        <table id="results">
-            @{int i = 0;
-
-                @while (i < @ViewBag.subjects.Count)
-                {
-                    <tr>
-                        @for (int j = 0; j < 3; j++)
+    <table id="results">
+        
+        @{int i = 0;
+            @while (i < @ViewBag.subjects.Count)
+            {
+                <tr>
+                    @for (int j = 0; j < 3; j++)
+                    {
+                        if (i == @ViewBag.subjects.Count)
                         {
-                            if (i == @ViewBag.subjects.Count)
-                            {
-                                break;
-                            }
-                            <td>
-                                <a class="cards-item text-center" asp-controller="Home" asp-action="GetPage" asp-route-url=@ViewBag.subjects[i].PageUrl asp-route-subject=@ViewBag.subjects[i].Id>
-                                    <div class="bubble">
-                                        <div class="rectangle">@ViewBag.subjects[i].Name </div>
-                                        <div class="triangle-l"></div>
-                                        <div class="triangle-r"></div>
-                                        <div class="info">
-                                            <img src=@ViewBag.subjects[i].ImgURL>
-                                            <div class="cards-item__content">
-                                                <div class="cards-item__desc">                                                    
-                                                    <p class="sub">5 вариантов теста по @ViewBag.subjects[i].QuestionCount вопросов</p>
-                                                </div>
+                            break;
+                        }
+                        <td>
+                            <a class="cards-item text-center" asp-controller="Home" asp-action="GetPage" asp-route-url=@ViewBag.subjects[i].PageUrl asp-route-subject=@ViewBag.subjects[i].Id>
+                                <div class="bubble">
+                                    <div class="rectangle">@ViewBag.subjects[i].Name </div>
+                                    <div class="triangle-l"></div>
+                                    <div class="triangle-r"></div>
+                                    <div class="info">
+                                        <img src=@ViewBag.subjects[i].ImgURL>
+                                        <div class="cards-item__content">
+                                            <div class="cards-item__desc">
+                                                <p class="sub">5 вариантов теста по @ViewBag.subjects[i].QuestionCount вопросов</p>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                            </td>
-                            i++;
-                        }
-                    </tr>
-                }
-
+                                </div>
+                            </a>
+                        </td>
+                        i++;
+                    }
+                </tr>
             }
 
-        </table>
+        }
+
+    </table>
 
  }
  else

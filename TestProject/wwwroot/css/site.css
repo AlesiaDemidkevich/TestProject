@@ -33,7 +33,7 @@ for details on configuring this project to bundle and minify static web assets. 
     float: right;
     bottom: 25px;
     right: 0;
-    margin-right: 200px;
+    margin-right: 140px;
 }
 a.navbar-brand {
     white-space: normal;
@@ -71,7 +71,7 @@ input[type=text] {
     text-align: center;
     color: white;
     background: #555555;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .1);
     transition: .3s;
 }
 

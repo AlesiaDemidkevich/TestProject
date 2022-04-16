@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -15,7 +16,7 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
                     {
                         <img style="width:70px; height:70px; margin-right:120px" src="https://res.cloudinary.com/alesya/image/upload/v1649711110/Images/sova_ihryjq.png">
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная <i class="fa fa-home"></i></a>
                         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="AllResult">Мои результаты</a>
 
 
@@ -23,13 +24,13 @@
                     else if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                     {
                         <img style="width: 70px; height: 70px; margin-right: 120px" src="https://res.cloudinary.com/alesya/image/upload/v1649711110/Images/sova_ihryjq.png">
-                        <a class="navbar-brand" asp-controller="Users" asp-action="Index">Главная</a>
+                        <a class="navbar-brand" asp-controller="Users" asp-action="Index">Главная <i class="fa fa-home"></i></a>
 
                     }
                     else
                     {
                         <img style="width: 70px; height: 70px; margin-right: 120px; visibility:hidden" />
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная <i class="fa fa-home"></i></a>
 
                     }
                 </div>
@@ -37,8 +38,8 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <form method="post" asp-controller="Home" asp-action="SearchResult">
-                            <input type="text" name="search" placeholder="Введите предмет" style="float: left; width: 70%; margin:5px" />
-                            <button type="submit" class="pressed-button" style="float: left">Найти</button>
+                            <input type="text" name="search" placeholder="Введите предмет" style="float: left; width: 70%; margin:5px"/>
+                            <button type="submit" class="pressed-button" style="float: left">Поиск</button>
                         </form>
 
                         <form method="post" asp-controller="Account" asp-action="Logout">

@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = @ViewBag.testView.Subject;
 }
+<link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
 <h1 class="page-header text-center" name="Subject">@ViewBag.testView.Subject</h1>
 <div id="container">
     <form asp-controller="UserTest" asp-action="Test" asp-route-subject="@ViewBag.testView.Subject" asp-route-variant="@ViewBag.testView.Variant" method="post">

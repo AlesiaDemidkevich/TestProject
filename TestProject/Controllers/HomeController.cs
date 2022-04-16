@@ -127,7 +127,7 @@ namespace TestProject.Controllers
                             break;
                         }
 
-                        cnt += "<td><a class='cards-item text-center'  href='/Home/GetPage?url=" + subjects[i].PageUrl + "&subject=" + subjects[i].Id + "'><div class='cards-item__img'><img src =" + subjects[i].ImgURL + "></ div ><div class='cards-item__content'><div class='cards-item__name'>" + subjects[i].Name + ". Сборник тестов</div><div class='cards-item__desc'><div class='cards-item__desc-icon'></div><p class='cards-item__desc-text'>5 вариантов теста по " + subjects[i].QuestionCount + " вопросов</p></div></div></a></td>";
+                        cnt += "<td><a class='cards-item text-center'  href='/Home/GetPage?url=" + subjects[i].PageUrl + "&subject=" + subjects[i].Id + "'><div class='bubble'><div class='rectangle'>"+subjects[i].Name+ "</div><div class='triangle-l'></div><div class='triangle-r'></div><div class='info'><img src =" + subjects[i].ImgURL + "><div class='cards-item__content'><div class='cards-item__desc'><p class='sub'>5 вариантов теста по " + subjects[i].QuestionCount + " вопросов</p></div></div></div></div></a></td>";
 
                         i++;
 
@@ -144,7 +144,19 @@ namespace TestProject.Controllers
             }
             else
             {
-                List<Subject> subjects = db.Subjects.Where(t => t.Type == id).ToList();
+                String type = "";
+                switch (id){
+                    case "r-1":
+                        type = "Технические";
+                        break;
+                    case "r-2":
+                        type = "Гуманитарные";
+                        break;
+                    case "r-3":
+                        type = "Естественные";
+                        break;
+                }
+                List<Subject> subjects = db.Subjects.Where(t => t.Type == type).ToList();
 
                 int i = 0;
                 string cnt = "";
@@ -157,7 +169,7 @@ namespace TestProject.Controllers
                             break;
                         }
 
-                        cnt += "<td><a class='cards-item text-center'  href='/Home/GetPage?url=" + subjects[i].PageUrl +"&subject=" + subjects[i].Id + "'><div class='cards-item__img'><img src =" + subjects[i].ImgURL + "></ div ><div class='cards-item__content'><div class='cards-item__name'>" + subjects[i].Name + ". Сборник тестов</div><div class='cards-item__desc'><div class='cards-item__desc-icon'></div><p class='cards-item__desc-text'>5 вариантов теста по " + subjects[i].QuestionCount + " вопросов</p></div></div></a></td>";
+                        cnt += "<td><a class='cards-item text-center'  href='/Home/GetPage?url=" + subjects[i].PageUrl + "&subject=" + subjects[i].Id + "'><div class='bubble'><div class='rectangle'>" + subjects[i].Name + "</div><div class='triangle-l'></div><div class='triangle-r'></div><div class='info'><img src =" + subjects[i].ImgURL + "><div class='cards-item__content'><div class='cards-item__desc'><p class='sub'>5 вариантов теста по " + subjects[i].QuestionCount + " вопросов</p></div></div></div></div></a></td>";
 
                         i++;
 

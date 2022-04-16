@@ -808,9 +808,7 @@ D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Shared\_
 D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Test\CreateTest.cshtml.g.cs
 D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
 D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\Edit.cshtml.g.cs
-D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\EditRole.cshtml.g.cs
 D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\Index.cshtml.g.cs
-D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\Users\UserList.cshtml.g.cs
 D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\UserTest\Result.cshtml.g.cs
 D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\UserTest\UserTest.cshtml.g.cs
 D:\Диплом\CP\TestProject\TestProject\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs

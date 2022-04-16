@@ -3,30 +3,49 @@
     ViewBag.Title = "Пользователи";
 }
 
-<div style="margin-bottom:20px">
-    <a class="btn btn-outline-primary" asp-action="Create">Добавить пользователя</a>
-    <a class="btn btn-outline-primary" asp-action="CreateTest" asp-controller="Test">Добавить тест</a>
-</div>
-
-<table class="table">
-    <tr><th>Логин</th><th></th></tr>
+<link rel="stylesheet" type="text/css" href="~/css/result.css" />
+<link rel="stylesheet" type="text/css" href="~/css/style.css" />
+<link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css'/>
+<link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
+<div style="display:flex">
+    <div>
+<table class="table_price">
+    <caption>Пользователи <a class="pressed-button2" style="float:right; border:1px solid black" asp-action="Create"><i class="fa fa-user-plus"></i></a></caption>
+    <tr><th>Логин</th></tr>
 
     @foreach (var user in Model)
     {
         if (user.UserName != "Administrator")
         {
-        <tr>
-            <td>@user.UserName</td>
-            <td>
-                <form style="float:right" asp-action="Delete" asp-route-id="@user.Id" method="post">
-                    <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@user.Id">Изменить</a>                   
-                    <a class="btn btn-outline-info" asp-action="EditRole" asp-route-userid="@user.Id">Роль</a>                   
-                    <button type="submit" class="btn btn-outline-danger">
-                        Удалить
-                    </button>
-                </form>
-            </td>
-        </tr>
+<tr>
+    <td>@user.UserName</td>
+    <td>
+        <form style="float:right; margin-top:0px !important" asp-action="Delete" asp-route-id="@user.Id" method="post">
+            <a class="pressed-button2" asp-action="Edit" asp-route-id="@user.Id"><i class="fa fa-pen"></i></a>
+            <button type="submit" class="pressed-button2">
+                <i class="fa fa-trash"></i>
+            </button>
+        </form>
+    </td>
+</tr>
         }
     }
 </table>
+        </div>
+    <div>
+<table class="table_price">
+    <caption>Предметы</caption>
+    <tr><th>Название предмета</th></tr>
+
+    @foreach (var sub in @ViewBag.subjects)
+    {
+            <tr>
+                <td>@sub.Name</td>
+                <td>
+                    <a class="pressed-button2" style="float:right" asp-action="CreateTest" asp-controller="Test"><i class="fa fa-plus-circle"></i></a>
+                </td>
+            </tr>
+    }
+</table>
+        </div>
+</div>

@@ -9,6 +9,11 @@
         "dist/browser/signalr.min.js",
         "dist/browser/signalr.min.js.map"
       ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "font-awesome@5.5.0",
+      "destination": "wwwroot/lib/font-awesome/"
     }
   ]
 }
