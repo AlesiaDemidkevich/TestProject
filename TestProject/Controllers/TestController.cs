@@ -52,8 +52,8 @@ namespace TestProject.Controllers
         public ActionResult Index()
         {
             if (User.IsInRole("admin"))
-            {
-                return View();
+            {                
+               return RedirectToAction("Index", "Users", _userManager.Users.ToList());
             }
             else
             {
@@ -62,12 +62,12 @@ namespace TestProject.Controllers
         }
 
         
-        public ActionResult CreateTest()
+        public ActionResult CreateTest(String subName)
         {
             if (User.IsInRole("admin"))
             {
-                List<Subject> subjectList = db.Subjects.ToList();
-            ViewBag.subjects = subjectList;
+                //List<Subject> subjectList = db.Subjects.ToList();
+            ViewBag.subName = subName;
             return View();
             }
             else
@@ -77,14 +77,13 @@ namespace TestProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(TestViewModel model)
+        public async Task<IActionResult> Create(TestViewModel model, String subName)
         {
-            
-                if (ModelState.IsValid)
-                {
-                    int idSubject = db.Subjects.Where(p => p.Name == model.Subject).First().Id;
+            //if (ModelState.IsValid)
+            //{           
+                    int idSubject = db.Subjects.Where(p => p.Name == subName).First().Id;
                     int countVariant = db.Tests.Where(v => v.IdSubject == idSubject).Count();
-                    ICollection<QuestionViewModel> questionList = model.QuestionList;
+                    List<QuestionViewModel> questionList = model.QuestionList;
 
                     Test test = new Test { IdSubject = idSubject, IdVariant = countVariant + 1 };
                     db.Tests.Add(test);
@@ -94,6 +93,7 @@ namespace TestProject.Controllers
                     {
                         var img = LoadImage(i.ImageUrlFile);
                         i.ImageUrl = img;
+                        i.Type = i.Type.Substring(7,1);
                         Question question = new Question { Text = i.Text, ImageUrl = i.ImageUrl, IdSubject = idSubject, IdTest = idTest, Type = i.Type };
                         ICollection<QuestionAnswerViewModel> questionAnswerList = i.AnswerList;
                         db.Questions.Add(question);
@@ -101,25 +101,27 @@ namespace TestProject.Controllers
 
                         int idQuestion = db.Questions.OrderByDescending(u => u.Id).First().Id;
 
-                        foreach (var a in questionAnswerList)
-                        {
 
-                            QuestionAnswer questionAnswer = new QuestionAnswer { Text = a.Text, IdQuestion = idQuestion, isRight = a.isRight };
-                            db.QuestionAnswers.Add(questionAnswer);
-                            await db.SaveChangesAsync();
+                if (questionAnswerList != null)
+                {
+                    foreach (var a in questionAnswerList)
+                    {
 
-                        }
+                        QuestionAnswer questionAnswer = new QuestionAnswer { Text = a.Text, IdQuestion = idQuestion, isRight = a.isRight };
+                        db.QuestionAnswers.Add(questionAnswer);
+                        await db.SaveChangesAsync();
 
                     }
-                    return RedirectToAction("CreateTest");
                 }
-                else
-                {
+                    }
+                    return RedirectToAction("Index");
+                
+            //}
+            //else
+            //{
+            //    return RedirectToAction("CreateTest", subName);
 
-                    return RedirectToAction("CreateTest");
-
-                }
-            
+            //}
             
         }
     }

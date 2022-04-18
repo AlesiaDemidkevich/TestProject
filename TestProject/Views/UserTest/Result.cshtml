@@ -3,23 +3,24 @@
     ViewBag.Title = "Результат";
 }
 <link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
+<link rel="stylesheet" type="text/css" href="~/css/test.css" />
 <h1 class="page-header text-center" name="Subject">@ViewBag.result.test.Subject</h1>
 <h3 class="page-header text-center" name="Mark">Результат - @ViewBag.result.Mark%</h3>
 <div id="container">
-    <form>
+    <form class="tabs"  style="position: relative; padding:10px 70px 100px 70px">
         @{ int i = 0;
             int k = 0;
             int a = 0;
             int b = 0;
             int num2 = 0;}
-        <h3 style="margin:20px">Часть A</h3>
+        <h3 style="margin-left:440px">Часть A</h3>
         @foreach (var test in @ViewBag.result.test.QuestionList)
         {
             @if (test.Type == "A")
             {
                 int num = i + 1;
                 <h4 class="page-header text-center" style="margin:10px">А @num</h4>
-                <div id="question">
+                <div id="question" class="osn-text">
                     @test.Text
                 </div>
                 @if (test.ImageUrl != null)
@@ -34,26 +35,47 @@
         {
             if (answer.isChecked && answer.isRight)
             {
-                <input type="checkbox" id="@i" checked style="color: green" disabled>
-                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" checked style="color: green">@answer.Text</lable><br />
+                <label class="checkbox-second" style="margin-top:10px">
+                    <input type="checkbox" id="@i" checked style="color: #76ad3d" disabled />
+                    <div class="checkbox-second__text" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" checked style="color: #76ad3d">@answer.Text</div>
+                </label><br />
+
+                @*<input type="checkbox" id="@i" checked style="color: green" disabled>*@
+                @*<lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" checked style="color: green">@answer.Text</lable><br />*@
                 a++;
             }
             else if (answer.isChecked && !answer.isRight)
             {
-                <input type="checkbox" id="@i" checked style="color: red" disabled>
-                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: red">@answer.Text</lable><br />
+                <label class="checkbox-second" style="margin-top:10px">
+                    <input type="checkbox" id="@i" checked style="color: red" disabled />
+                    <div class="checkbox-second__text_err" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: red">@answer.Text</div>
+                </label><br />
+
+                @*<input type="checkbox" id="@i" checked style="color: red" disabled>
+                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: red">@answer.Text</lable><br />*@
                 a++;
             }
             else if (!answer.isChecked && answer.isRight)
             {
-                <input type="checkbox" id="@i" style="color: green" disabled>
-                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: green">@answer.Text</lable><br />
+
+                <label class="checkbox-second" style="margin-top:10px">
+                    <input type="checkbox" id="@i" checked style="color: #76ad3d" disabled />
+                    <div class="checkbox-second__text_r" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: #76ad3d">@answer.Text</div>
+                </label><br />
+
+                @*<input type="checkbox" id="@i" style="color: green" disabled>
+                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: green">@answer.Text</lable><br />*@
                 a++;
             }
             else
             {
-                <input type="checkbox" id="@i" disabled>
-                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</lable><br />
+                <label class="checkbox-second" style="margin-top:10px">
+                    <input type="checkbox" id="@i" disabled />
+                    <div  class="checkbox-second__text" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</div>
+                </label><br />
+
+                @*<input type="checkbox" id="@i" disabled>
+                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</lable><br />*@
                 a++;
             }
         }
@@ -64,7 +86,7 @@
             }
 
         }
-        <h3 style="margin:20px">Часть B</h3>
+        <h3  style="margin-left:440px">Часть B</h3>
         @foreach (var test in @ViewBag.result.test.QuestionList)
         {
             k = i;
@@ -72,7 +94,7 @@
             {
                 num2++;
                 <h4 class="page-header text-center" style="margin:10px">B @num2</h4>
-                <div id="question">
+                <div id="question" class="osn-text">
                     @test.Text
                 </div>
                 @if (test.ImageUrl != null)
@@ -88,14 +110,14 @@
         {
             @if (answer.Text == answer.UserText)
             {
-                <p>Ответ:</p>
-                <input type="text" readonly value="@answer.Text" style="border-color:green">
+                <p class="lable-head">Ответ:</p>
+                <input type="text" readonly value="@answer.Text" style="border-color: #76ad3d">
             }
             else
             {
-                <p>Ответ:</p>
-                <input type="text" readonly value="@answer.Text" style="border-color:green; color:green">
-                <p>Ваш ответ:</p>
+                <p class="lable-head">Ответ:</p>
+                <input type="text" readonly value="@answer.Text" style="border-color: #76ad3d; color: #76ad3d "><br/>
+                <p class="lable-head">Ваш ответ:</p>
                 <input type="text" readonly value="@answer.UserText" style="border-color:red; color:red">
 
             }

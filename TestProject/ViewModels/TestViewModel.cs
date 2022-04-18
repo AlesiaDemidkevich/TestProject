@@ -16,6 +16,7 @@ namespace TestProject.ViewModels
         [Display(Name = "Subject")]
         public string Subject { get; set; }
         public string Variant { get; set; }
+        public string Type { get; set; }
         public int IdTest { get; set; }
 
         [NotMapped]

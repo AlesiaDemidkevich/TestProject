@@ -3,80 +3,93 @@
     ViewData["Title"] = @ViewBag.testView.Subject;
 }
 <link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
-<h1 class="page-header text-center" name="Subject">@ViewBag.testView.Subject</h1>
+<link rel="stylesheet" type="text/css" href="~/css/test.css" />
+<h1 class="page-header text-center head" name="Subject">@ViewBag.testView.Subject</h1>
 <div id="container">
-    <form asp-controller="UserTest" asp-action="Test" asp-route-subject="@ViewBag.testView.Subject" asp-route-variant="@ViewBag.testView.Variant" method="post">
+    <form asp-controller="UserTest" class="tabs"  style="position: relative; padding:10px 70px 100px 70px" asp-action="Test" asp-route-subject="@ViewBag.testView.Subject" asp-route-variant="@ViewBag.testView.Variant" method="post">
         @{ int i = 0;
             int k = 0;
             int a = 0;
             int b = 0;
             int num2 = 0;}
-        <h3 style="margin:20px">Часть A</h3>
+        <h3 style="margin-left:440px">Часть A</h3>
         @foreach (var test in @ViewBag.testView.QuestionList)
         {
             @if (test.Type == "A")
             {
-                int num = i + 1;
-                <h4 class="page-header text-center" style="margin:10px">А @num</h4>
-                <div id="question">
-                    @test.Text
-                </div>
-                @if (test.ImageUrl != null)
-                {
-                    <div id="img">
-                        <img src="@test.ImageUrl" style="width:400px; height:200px" />
-                    </div>
-                }
 
-                <div id="answers" style="margin:30px">
-                    @foreach (var answer in test.AnswerList)
+                int num = i + 1;
+                @*<div class="block">*@
+
+                    <h4 class="page-header text-center" style="margin:10px">А @num</h4>
+                    <div id="question" class="osn-text">
+                        @test.Text
+                    </div>
+                    @if (test.ImageUrl != null)
                     {
-                        <input type="checkbox" id="@i" asp-for="@Model.QuestionList[i].AnswerList[a].isChecked" value="True">
-                        <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</lable><br />
-                        a++;
+                        <div id="img">
+                            <img src="@test.ImageUrl" style="width:400px; height:200px" />
+                        </div>
                     }
 
-                </div>
+                    <div id="answers" style="margin:30px">
+                        @foreach (var answer in test.AnswerList)
+                        {
+
+                            <label class="checkbox-second" style="margin-top:10px">
+                                <input type="checkbox" id="@i" asp-for="@Model.QuestionList[i].AnswerList[a].isChecked" value="True" />
+                                <div class="checkbox-second__text" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</div>
+                            </label><br />
+
+                            @*<input type="checkbox" id="@i" asp-for="@Model.QuestionList[i].AnswerList[a].isChecked" value="True">
+                            <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</lable><br />*@
+                            a++;
+                        }
+
+                    </div>
+                @*</div>*@
                 a = 0;
                 i++;
             }
 
         }
-        <h3 style="margin:20px">Часть B</h3>
+        <h3 style="margin-left:440px">Часть B</h3>
         @{ k = i;}
         @foreach (var test in @ViewBag.testView.QuestionList)
         {
             
-            if (test.Type == "B")
-            {
-                num2 ++;
-                <h4 class="page-header text-center" style="margin:10px">B @num2</h4>
-                <div id="question">
-                    @test.Text
-                </div>
-                @if (test.ImageUrl != null)
+                if (test.Type == "B")
                 {
-                    <div id="img">
-                        <img src="@test.ImageUrl" style="width:200px; height:140px" />
-                    </div>
-                }
-
-                <div id="answers" style="margin:30px">
-                    Ответ:
-                    <br />
-                    <input type="text" name="QuestionList[@k].AnswerList[@b].text">
-                    @{
-                        b++;
-
-                    }
-                </div>
-                                b = 0;
-                                k++;
-                            }
-                        }
-        <div class="form-group">
-            <input id="save" type="submit" value="Завершить тест" class="btn btn-outline-primary" />
+                num2++;
+        @*<div class="block">*@
+        <h4 class="page-header text-center" style="margin:10px">B @num2</h4>
+        <div id="question" class="osn-text">
+            @test.Text
         </div>
-    </form>
+        @if (test.ImageUrl != null)
+        {
+            <div id="img">
+                <img src="@test.ImageUrl" style="width:200px; height:140px" />
+            </div>
+        }
+
+        <div id="answers" style="margin:30px" class="lable-head">
+            Ответ:
+            <br />
+            <input type="text" name="QuestionList[@k].AnswerList[@b].text">
+            @{
+                b++;
+
+            }
+        </div>
+    @*</div>*@
+                b = 0;
+                k++;
+                }
+                }
+                <div class="form-group" style="margin-left:420px">
+                    <input id="save" type="submit" value="Завершить тест" class="pressed-button2" />
+                </div>
+        </form>
     <br />
 </div>

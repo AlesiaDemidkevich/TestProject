@@ -6,7 +6,6 @@
 <link rel="stylesheet" type="text/css" href="~/css/result.css" />
 <link rel="stylesheet" type="text/css" href="~/css/style.css" />
 <link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css'/>
-<link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
 <div style="display:flex">
     <div>
 <table class="table_price">
@@ -42,7 +41,7 @@
             <tr>
                 <td>@sub.Name</td>
                 <td>
-                    <a class="pressed-button2" style="float:right" asp-action="CreateTest" asp-controller="Test"><i class="fa fa-plus-circle"></i></a>
+                    <a class="pressed-button2" style="float:right" asp-action="CreateTest" asp-controller="Test" asp-route-subName="@sub.Name"><i class="fa fa-plus-circle"></i></a>
                 </td>
             </tr>
     }

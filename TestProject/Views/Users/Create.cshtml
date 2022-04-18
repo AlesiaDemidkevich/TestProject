@@ -4,20 +4,26 @@
 }
 <link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
 <link rel="stylesheet" type="text/css" href="~/css/user.css" />
+<link rel="stylesheet" href="~/css/site.css">
 <link rel="stylesheet" type="text/css" href="~/css/style.css" />
-<div class="user-form">
-<form asp-action="Create" asp-controller="Users">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="UserName" class="control-label">Логин</label>
-        <input type="text" asp-for="UserName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Password" class="control-label">Пароль</label>
-        <input type="password" asp-for="Password" class="form-control" />
-    </div>
-    <div class="form-group" style="float:right">
-        <input type="submit" value="Добавить" class="pressed-button2" />
-    </div>
-</form>
+<div class="user-form">    
+    <form asp-action="Create" asp-controller="Users">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label">Логин</label>
+            <input type="text" asp-for="UserName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Пароль</label>
+            <input type="password" asp-for="Password" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Добавить" class="login100-form-btn">
+        </div>
+    </form>
+    <form asp-action="Index" asp-controller="Users">
+        <div class="form-group">
+            <input type="submit" value="Отменить" class="login100-form-btn" />
+        </div>
+    </form>
 </div>

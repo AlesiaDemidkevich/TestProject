@@ -8,9 +8,9 @@
     {
         <h1 class="page-header text-center">Тесты онлайн</h1>
         <p class="text-center lead">
-            В данном разделе нашего сайта вы можете пройти бесплатное онлайн-тестирование на основе отдельно взятых тестов из книг. Выполнив тест, вы сразу увидите свои результаты: количество правильных и неправильных ответов, а также время, затраченное на прохождение тестирования.
+            В данном разделе нашего сайта вы можете пройти бесплатное онлайн-тестирование на основе отдельно взятых тестов из книг. Выполнив тест, вы сразу увидите свои результаты.
         </p>
-        <form id="sort" action="/Home/Index" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" method="post">
+        @*<form id="sort" action="/Home/Index" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" method="post">
             <input type="radio" id="All" name="type" onchange="checkRadio(id)" checked>
             <label for="r3" style="margin:2px 5px 2px 2px">Все</label>
             <input type="radio" id="Технические" name="type" onchange="checkRadio(id)">
@@ -19,7 +19,7 @@
             <label for="r2" style="margin:2px 5px 2px 2px">Гуманитарнxые</label>
             <input type="radio" id="Естественные" name="type" onchange="checkRadio(id)">
             <label for="r3" style="margin:2px 5px 2px 2px">Естественные</label>
-        </form>
+        </form>*@
         <table id="results">
             @{int i = 0;
 

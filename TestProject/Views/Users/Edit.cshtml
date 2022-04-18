@@ -5,6 +5,7 @@
 }
 <link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
 <link rel="stylesheet" type="text/css" href="~/css/user.css" />
+<link rel="stylesheet" href="~/css/site.css">
 <link rel="stylesheet" type="text/css" href="~/css/style.css" />
 <div class="user-form">
     <form asp-action="Edit" asp-controller="Users">
@@ -19,15 +20,20 @@
                 @foreach (IdentityRole role in Model.AllRoles)
                 {
                     <input type="radio" name="UserRoles" id="r-@i" value="@role.Name"
-                           @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") /> 
-                           <label class="tab" for="r-@i">@role.Name</label><br />
-                        i++;
-                    }
+                           @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />
+                    <label class="tab" for="r-@i">@role.Name</label><br />
+                    i++;
+                }
             }
             <span class="glider"></span>
         </div>
-        <div class="form-group" style="float:right">
-            <input type="submit" value="Сохранить" class="pressed-button2" />
+        <div class="form-group">
+            <input type="submit" value="Сохранить" class="login100-form-btn"/>
+        </div>
+    </form>
+    <form asp-action="Index" asp-controller="Users">
+        <div class="form-group">
+            <input type="submit" value="Отменить" class="login100-form-btn" />
         </div>
     </form>
 </div>

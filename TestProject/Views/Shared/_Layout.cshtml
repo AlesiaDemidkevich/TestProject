@@ -35,17 +35,22 @@
                     }
                 </div>
                 <div id="menu-wrapper">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
                     {
                         <form method="post" asp-controller="Home" asp-action="SearchResult">
-                            <input type="text" name="search" placeholder="Введите предмет" style="float: left; width: 70%; margin:5px"/>
+                            <input type="text" name="search" placeholder="Введите предмет" style="float: left; width: 70%; margin:5px" />
                             <button type="submit" class="pressed-button" style="float: left">Поиск</button>
                         </form>
 
                         <form method="post" asp-controller="Account" asp-action="Logout">
                             <input class="pressed-button" type="submit" value="Выйти" />
                         </form>
-
+                    }
+                    else if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                    {
+                        <form method="post" asp-controller="Account" asp-action="Logout">
+                            <input class="pressed-button" type="submit" value="Выйти" />
+                        </form>
                     }
                     else
                     {
