@@ -27,9 +27,11 @@
                     <td>@t.Date.ToShortDateString()</td>
                     <td>
                         <form style="float:right" asp-action="DeleteResult" asp-route-id="@t.Id" method="post">
-                            @*<a class="btn btn-outline-info" asp-action="ShowResult" asp-controller="UserTest" >Просмотреть</a>*@
+                            @if (@t.Url!=null) {
+                            <a class="pressed-button2" href="~/result/@t.Url.Name"><i class="fa fa-download"></i></a>
+                            }
                             <button type="submit" class="pressed-button2">
-                                Удалить
+                                <i class="fa fa-trash"></i>
                             </button>
                         </form>
                     </td>

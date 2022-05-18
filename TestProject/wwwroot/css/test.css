@@ -234,6 +234,18 @@
     background: #cdd1da;
 }
 
+.clockpage {
+    margin: auto;
+    margin-bottom:10px;
+    max-width: 500px;
+    min-width: 100px;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 32px;
+    padding: 10px;
+    font-weight: bold;
+}
+
 .checkbox-second input:checked + .checkbox-second__text_r:after {
     opacity: 1;
 }

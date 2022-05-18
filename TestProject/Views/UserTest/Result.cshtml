@@ -40,9 +40,7 @@
                     <div class="checkbox-second__text" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" checked style="color: #76ad3d">@answer.Text</div>
                 </label><br />
 
-                @*<input type="checkbox" id="@i" checked style="color: green" disabled>*@
-                @*<lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" checked style="color: green">@answer.Text</lable><br />*@
-                a++;
+                 a++;
             }
             else if (answer.isChecked && !answer.isRight)
             {
@@ -51,9 +49,7 @@
                     <div class="checkbox-second__text_err" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: red">@answer.Text</div>
                 </label><br />
 
-                @*<input type="checkbox" id="@i" checked style="color: red" disabled>
-                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: red">@answer.Text</lable><br />*@
-                a++;
+                 a++;
             }
             else if (!answer.isChecked && answer.isRight)
             {
@@ -63,8 +59,6 @@
                     <div class="checkbox-second__text_r" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: #76ad3d">@answer.Text</div>
                 </label><br />
 
-                @*<input type="checkbox" id="@i" style="color: green" disabled>
-                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text" style="color: green">@answer.Text</lable><br />*@
                 a++;
             }
             else
@@ -74,8 +68,6 @@
                     <div  class="checkbox-second__text" for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</div>
                 </label><br />
 
-                @*<input type="checkbox" id="@i" disabled>
-                <lable for="@i" name="QuestionList[@i].AnswerList[@a].text" value="@answer.Text">@answer.Text</lable><br />*@
                 a++;
             }
         }
@@ -108,18 +100,27 @@
 
         <br />@foreach (var answer in test.AnswerList)
         {
-            @if (answer.Text == answer.UserText)
+            @if (answer.UserText != null)
             {
-                <p class="lable-head">Ответ:</p>
-                <input type="text" readonly value="@answer.Text" style="border-color: #76ad3d">
-            }
+                @if (answer.Text.ToUpper() == answer.UserText.ToUpper())
+                {
+                    <p class="lable-head">Ответ:</p>
+                    <input type="text" readonly value="@answer.Text" style="border-color: #76ad3d">
+                }
+                else
+                {
+                    <p class="lable-head">Ответ:</p>
+                    <input type="text" readonly value="@answer.Text" style="border-color: #76ad3d; color: #76ad3d "><br />
+                    <p class="lable-head">Ваш ответ:</p>
+                    <input type="text" readonly value="@answer.UserText" style="border-color:red; color:red">
+
+                }}
             else
             {
                 <p class="lable-head">Ответ:</p>
-                <input type="text" readonly value="@answer.Text" style="border-color: #76ad3d; color: #76ad3d "><br/>
+                <input type="text" readonly value="@answer.Text" style="border-color: #76ad3d; color: #76ad3d "><br />
                 <p class="lable-head">Ваш ответ:</p>
-                <input type="text" readonly value="@answer.UserText" style="border-color:red; color:red">
-
+                <input type="text" readonly value=" " style="border-color:red; color:red">
             }
         }
         @{

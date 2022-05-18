@@ -1,8 +1,9 @@
 ﻿var i = 2;
 var q = 2;
-function duplicate() {    
+var subject;
+function duplicate(sub) {    
+    subject = sub;
     var original = document.getElementById('partA');
-    
     let div = document.createElement('div');
     div.className = "form-group";
 
@@ -60,7 +61,7 @@ function duplicate() {
     inpAdd.className = "pressed-button2 fa fa-plus-circle";
     inpAdd.id = 'v' + i;
     inpAdd.onclick = function () {
-        return add(inpAdd);
+        return add(inpAdd,subject);
     }
     inpAdd.setAttribute('style', 'margin-left:10px');
 
@@ -78,8 +79,7 @@ function duplicate() {
     div2.appendChild(div5);
     div.appendChild(div2);
     original.appendChild(div);
-  
-    return add(inpAdd);    
+    return add(inpAdd,subject);    
 
 }
 
@@ -95,7 +95,7 @@ function del(button) {
 
 var k = 1;
 var singl = 0;
-function add(button) {
+function add(button, subject) {
 
     let currId = button.id.slice(1);
     let questId = Number(currId) - 1;
@@ -136,14 +136,28 @@ function add(button) {
     let label2 = document.createElement('label');
     label2.className = "checkbox-second";
     label2.setAttribute('style', 'margin-right:24px; margin-top:10px');
-    
+    let check;
+    let checkId;
+    if (subject == "Русский язык" || subject == "Беларуская мова" || subject == "Английский язык") {
+        check = document.createElement('input');
+        check.setAttribute('type', 'checkbox')
+        check.setAttribute('value', 'true')
+        check.id = "ch" + k;
+        checkId = 'QuestionList[' + questId + '].AnswerList[' + count + '].isRight';
+        check.setAttribute('name', checkId);
 
-    let check = document.createElement('input');
-    check.setAttribute('type', 'checkbox')
-    check.setAttribute('value', 'true')
-    check.id = "ch" + k;
-    let checkId = 'QuestionList[' + questId + '].AnswerList[' + count + '].isRight';
-    check.setAttribute('name', checkId);
+    }
+    else {
+        check = document.createElement('input');
+        check.setAttribute('type', 'checkbox')
+        check.setAttribute('value', 'true')
+        check.id = "ch" + k;
+        checkId = 'QuestionList[' + questId + '].AnswerList[' + count + '].isRight';
+        check.setAttribute('name', checkId);
+        check.onclick = function () {
+            return switchCheck(check);
+        }
+    }
 
     let div6 = document.createElement('div');
     div6.className = "checkbox-second__text";
@@ -189,4 +203,45 @@ function getAllAnswerForQuestion(parent, qId) {
     return false;
 }
 
+
+var curElem;
+var prevElem;
+var isFirst = true;
+function switchCheck(elem) {
+    var blocElems = document.querySelectorAll('[name*="' + elem.getAttribute('name').split('.')[0] +'"][type="checkbox"]')
+   
+    for (var i = 0; i < blocElems.length; i++) {
+       
+            curElem = elem.id;
+            var curElement = document.getElementById(curElem);
+            prevElement = curElement;
+            if (blocElems[i].checked == true && curElement != blocElems[i]) {
+                prevElem = blocElems[i].id;
+                prevElement = document.getElementById(prevElem)
+
+                curElement.checked = true;
+                prevElement.checked = false;
+            }
+            
+    }
+}
+
+function switchCheck2(elem) {
+    var blocElems = document.querySelectorAll('[class*="' + elem.getAttribute('class').split('.')[0] + '"][type="checkbox"]')
+
+    for (var i = 0; i < blocElems.length; i++) {
+
+        curElem = elem.id;
+        var curElement = document.getElementById(curElem);
+        prevElement = curElement;
+        if (blocElems[i].checked == true && curElement != blocElems[i]) {
+            prevElem = blocElems[i].id;
+            prevElement = document.getElementById(prevElem)
+
+            curElement.checked = true;
+            prevElement.checked = false;
+        }
+
+    }
+}
 

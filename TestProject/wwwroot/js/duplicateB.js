@@ -62,8 +62,8 @@ function duplicateB() {
     div8.id = "answ" + ++k;
     div8.setAttribute('style','display:flex');
 
-    let currId = div8.id.substr(4, 1);
-    let questId = currId-1;
+    //let currId = div8.id.substr(4, 1);
+    //let questId = currId-1;
 
     let inp2 = document.createElement('input');
     inp2.className = "form-control";
@@ -71,7 +71,7 @@ function duplicateB() {
     inp2.setAttribute('style', 'width:650px; margin:0px 15px 10px 0px');
     inp2.id = "a" + k;
     let count = div2.getElementsByClassName('count').length;
-    let nameId2 = 'QuestionList[' + questId + '].AnswerList[' + 0 + '].text';
+    let nameId2 = 'QuestionList[' + idq + '].AnswerList[' + 0 + '].text';
     inp2.setAttribute('name', nameId2);
 
     let label2 = document.createElement('label');
@@ -84,7 +84,7 @@ function duplicateB() {
     check.setAttribute('value', 'true')
     check.setAttribute('checked','checked');
     check.id = "ch" + k;
-    let checkId = 'QuestionList[' + questId + '].AnswerList[' + 0 + '].isRight';
+    let checkId = 'QuestionList[' + idq + '].AnswerList[' + 0 + '].isRight';
     check.setAttribute('name', checkId);
     check.onclick = function () {
        return false;

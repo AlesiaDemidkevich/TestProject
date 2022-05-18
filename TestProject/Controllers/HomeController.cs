@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
@@ -70,22 +72,77 @@ namespace TestProject.Controllers
                 string idUser = getCurrentUserId();
             var res = db.Results.Where(t=>t.IdUser==idUser).ToList();
             List<ResultViewModel> results = new List<ResultViewModel>();
-            foreach (var r in res) {
-                var subject = (from sub in db.Subjects
-                               join test in db.Tests on sub.Id equals test.IdSubject
-                               where test.Id == r.IdTest
-                               select sub).First().Name;
+                List<ResultViewModel> final = new List<ResultViewModel>();
+                foreach (var r in res)
+                {
+                    var subject = (from sub in db.Subjects
+                                   join test in db.Tests on sub.Id equals test.IdSubject
+                                   where test.Id == r.IdTest
+                                   select sub).First().Name;
 
-                var variant = (from var in db.Variants
-                               join test in db.Tests on var.Id equals test.IdVariant
-                               where test.Id == r.IdTest
-                               select var).First().Name;
-                ResultViewModel result = new ResultViewModel { Id = r.Id, IdUser = r.IdUser, IdTest = r.IdTest, Subject = subject, Variant = variant, Mark = r.Mark, Date = r.Date};
-                results.Add(result);
-            }
+                    var variant = (from var in db.Variants
+                                   join test in db.Tests on var.Id equals test.IdVariant
+                                   where test.Id == r.IdTest
+                                   select var).First().Name;
+                   
+                
+                            string idU = getCurrentUserId();
+                            string subjectAbb = "";
+                            switch (subject)
+                            {
+                                case "Английский язык":
+                                    subjectAbb = "En";
+                                    break;
+                                case "Беларуская мова":
+                                    subjectAbb = "Bel";
+                                    break;
+                                case "Биология":
+                                    subjectAbb = "Biol";
+                                    break;
+                                case "Химия":
+                                    subjectAbb = "Chem";
+                                    break;
+                                case "История Беларуси":
+                                    subjectAbb = "His";
+                                    break;
+                                case "Математика":
+                                    subjectAbb = "Math";
+                                    break;
+                                case "Обществоведение":
+                                    subjectAbb = "Obsh";
+                                    break;
+                                case "Русский язык":
+                                    subjectAbb = "Rus";
+                                    break;
+                                case "Физика":
+                                    subjectAbb = "Phis";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            var Name = db.Users.Where(s => s.Id == idU).First().UserName;
+                            DateTime date = r.Date;
+                            string dd = date.ToString("g", CultureInfo.GetCultureInfo("de-DE"));
+                            dd = dd.Replace(':', '.');
+                            dd = dd.Replace(" ", "_");
+                            String vv = variant.Substring(8);
+                            DirectoryInfo di = new DirectoryInfo(_appEnvironment.WebRootPath + "/result");
+                            FileInfo[] rgFile = di.GetFiles().Where(s => s.Name.Contains($"{Name}_{subjectAbb}_{vv}_{dd}.pdf")).ToArray();
+                    ResultViewModel result;
+                    if (rgFile.Length != 0)
+                    {
+                         result = new ResultViewModel { Id = r.Id, IdUser = r.IdUser, IdTest = r.IdTest, Subject = subject, Variant = variant, Mark = r.Mark, Date = r.Date, Url = rgFile[0] };
+                    }
+                    else
+                    {
+                       result = new ResultViewModel { Id = r.Id, IdUser = r.IdUser, IdTest = r.IdTest, Subject = subject, Variant = variant, Mark = r.Mark, Date = r.Date };
+                    }
+                        results.Add(result);
+
+                }
                        
-            ViewBag.results = results;
-            return View("UserResult");
+                    ViewBag.results = results;
+                    return View("UserResult");
             }
             else
             {

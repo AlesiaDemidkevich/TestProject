@@ -102,17 +102,17 @@ namespace TestProject.Controllers
                         int idQuestion = db.Questions.OrderByDescending(u => u.Id).First().Id;
 
 
-                if (questionAnswerList != null)
-                {
-                    foreach (var a in questionAnswerList)
-                    {
+                        if (questionAnswerList != null)
+                        {
+                            foreach (var a in questionAnswerList)
+                               {
 
                         QuestionAnswer questionAnswer = new QuestionAnswer { Text = a.Text, IdQuestion = idQuestion, isRight = a.isRight };
                         db.QuestionAnswers.Add(questionAnswer);
                         await db.SaveChangesAsync();
 
-                    }
-                }
+                               }
+                         }
                     }
                     return RedirectToAction("Index");
                 

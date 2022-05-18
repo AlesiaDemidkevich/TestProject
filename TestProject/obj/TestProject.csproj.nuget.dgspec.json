@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Диплом\\CP\\TestProject\\TestProject\\TestProject.csproj": {}
+    "D:\\Diplom\\CP\\TestProject\\TestProject\\TestProject.csproj": {}
   },
   "projects": {
-    "D:\\Диплом\\CP\\TestProject\\TestProject\\TestProject.csproj": {
+    "D:\\Diplom\\CP\\TestProject\\TestProject\\TestProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Диплом\\CP\\TestProject\\TestProject\\TestProject.csproj",
+        "projectUniqueName": "D:\\Diplom\\CP\\TestProject\\TestProject\\TestProject.csproj",
         "projectName": "TestProject",
-        "projectPath": "D:\\Диплом\\CP\\TestProject\\TestProject\\TestProject.csproj",
+        "projectPath": "D:\\Diplom\\CP\\TestProject\\TestProject\\TestProject.csproj",
         "packagesPath": "C:\\Users\\Alesya\\.nuget\\packages\\",
-        "outputPath": "D:\\Диплом\\CP\\TestProject\\TestProject\\obj\\",
+        "outputPath": "D:\\Diplom\\CP\\TestProject\\TestProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alesya\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[1.15.2, )"
             },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.16.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.1, )"
@@ -69,6 +73,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.1, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.3, )"
+            },
+            "itext7": {
+              "target": "Package",
+              "version": "[7.2.2, )"
             }
           },
           "imports": [

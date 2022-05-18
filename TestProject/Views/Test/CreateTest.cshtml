@@ -7,8 +7,8 @@
 <form method="post" asp-controller="Test" asp-action="Create" asp-route-subName="@ViewBag.subName" id="container" class="tabs" style="position: relative; padding-bottom: 100px;" enctype="multipart/form-data">
     <div class="text-danger"></div>
     <div class="form-group" style="text-align:center !important">
-        <label class="head" asp-for="Subject" id="source">@ViewBag.subName</label><br/>
-        <input type="button" id="chA" class="pressed-button2" value="Часть А"/>
+        <label class="head" asp-for="Subject" id="source">@ViewBag.subName</label><br />
+        <input type="button" id="chA" class="pressed-button2" value="Часть А" />
     </div>
     <div id="partA">
         <div class="form-group">
@@ -23,26 +23,35 @@
                 <br />
                 <div style="display:flex; margin-bottom:10px">
                     <h4 style="margin: 0 10px 20px 190px">Ответы</h4>
-                    <button onclick="return add(this)" class="pressed-button2 fa fa-plus-circle" id="v1" style="margin-left:10px"></button>
+                    <button onclick="return add(this,'@ViewBag.subName')" class="pressed-button2 fa fa-plus-circle" id="v1" style="margin-left:10px"></button>
                 </div>
                 <div id="answ1" class="count">
                     <input type="text" name="QuestionList[0].AnswerList[0].text" class="form-control" id="a1" style="float: left; display: inline-block; width: 65%; margin:5px 23px 0px 190px" />
-
-                    <label class="checkbox-second" style="margin-top:10px">
-                        <input type="checkbox" name="QuestionList[0].AnswerList[0].isRight" value="True"  id="ch1" />
-                        <div class="checkbox-second__text">Верно</div>
-                    </label>
+                    @if (@ViewBag.subName.Equals("Русский язык") || @ViewBag.subName.Equals("Беларуская мова") || @ViewBag.subName.Equals("Английский язык"))
+                    {
+                        <label class="checkbox-second" style="margin-top:10px">
+                            <input type="checkbox" name="QuestionList[0].AnswerList[0].isRight" value="True" id="ch1" />
+                            <div class="checkbox-second__text">Верно</div>
+                        </label>
+                    }
+                    else
+                    {
+                        <label class="checkbox-second" style="margin-top:10px">
+                            <input type="checkbox" name="QuestionList[0].AnswerList[0].isRight" value="True" id="ch1" onclick="return switchCheck(this)" />
+                            <div class="checkbox-second__text">Верно</div>
+                        </label>
+                    }
                 </div>
             </div>
         </div>
     </div>
 
     <div class="form-group" id="btnA">
-        <input type="button" onclick="duplicate()" class="pressed-button2" id="addQuestion" value="Добавить вопрос" style="margin-top:20px; margin-bottom:10px; bottom:40px" />
+        <input type="button" onclick="duplicate('@ViewBag.subName')" class="pressed-button2" id="addQuestion" value="Добавить вопрос" style="margin-top:20px; margin-bottom:10px; bottom:40px" />
     </div>
     <p></p>
     <div class="form-group" style="text-align:center !important">
-        <input type="button" id="chB" class="pressed-button2" value="Часть B" asp-for="Type"/>
+        <input type="button" id="chB" class="pressed-button2" value="Часть B" asp-for="Type" />
     </div>
     <div id="partB">
         <div class="form-group">
@@ -54,17 +63,17 @@
                     <input type="text" name="QuestionList[1].text" class="form-control" id="duplic1" style="float:left; display:inline-block; width:100%; margin:0px 16px 10px 0px" />
                 </div>
                 <input type="file" size="60" name="QuestionList[1].imageUrlFile" /><br>
-                <br />
+                <br>
                 <div style="display:flex; margin-bottom:10px">
                     <h4 style="margin: 0 10px 10px 190px">Ответ</h4>
                     <div id="answ1" class="count" style="display:flex">
-                        <input type="text" name="QuestionList[1].AnswerList[0].text" class="form-control" id="a1" style="width:650px; margin:0px 15px 10px 0px"/>
+                        <input type="text" name="QuestionList[1].AnswerList[0].text" class="form-control" id="a1" style="width:650px; margin:0px 15px 10px 0px" />
                         <label class="checkbox-second" style="margin-top:10px">
-                            <input type="checkbox" name="QuestionList[1].AnswerList[0].isRight" value="True" checked id="ch1" onclick="return false;"/>
+                            <input type="checkbox" name="QuestionList[1].AnswerList[0].isRight" value="True" checked id="ch1" onclick="return false;" />
                             <div class="checkbox-second__text">Верно</div>
                         </label>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
@@ -84,23 +93,23 @@
 <script src="~/js/duplicateB.js">
 </script>
 <script>
-    var subject = document.getElementById('source');
-    subject.onchange = function () {
-        document.cookie = 'subject=' + subject.value + '; path=/;';
-    };
-    function getCookie(name) {
-        var matches = document.cookie.match(new RegExp(
-            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-        ));
-        return matches ? decodeURIComponent(matches[1]) : undefined;
-    }
-    var select = document.getElementById('source'),
-        cookie = getCookie('subject');
-    if (cookie) {
-        select.value = cookie;
-    }
+    //var subject = document.getElementById('source');
+    //subject.onchange = function () {
+    //    document.cookie = 'subject=' + subject.value + '; path=/;';
+    //};
+    //function getCookie(name) {
+    //    var matches = document.cookie.match(new RegExp(
+    //        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    //    ));
+    //    return matches ? decodeURIComponent(matches[1]) : undefined;
+    //}
+    //var select = document.getElementById('source'),
+    //    cookie = getCookie('subject');
+    //if (cookie) {
+    //    select.value = cookie;
+    //}
 
-    var subjectSelect = container.source;
+    //var subjectSelect = container.source;
 
 
     var chA = document.getElementById("chA");
@@ -131,4 +140,7 @@
             btnB.hidden = true;
         }
     });
+
+    
+
 </script>
