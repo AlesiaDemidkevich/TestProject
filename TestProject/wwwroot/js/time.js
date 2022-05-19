@@ -1,6 +1,6 @@
-﻿var hours = 0;
-var minutes = 0;
-var seconds = 0;
+﻿var hours = 1;
+var minutes = 59;
+var seconds = 55;
 function clockTimer(sub) {
 
     if (sub == "Физика" || sub == "Математика") {
@@ -19,6 +19,7 @@ function clockTimer(sub) {
     if (sub == "Химия") {
 
         if (hours == 2 && minutes == 20 && seconds == 0) {
+                             
             alert("Осталось 10 минут до завершения теста");
         }
 
@@ -32,7 +33,8 @@ function clockTimer(sub) {
     if (sub == "Биология" || sub == "Английский язык" || sub == "Русский язык" || sub == "Беларуская мова") {
 
         if (hours == 1 && minutes == 50 && seconds == 0) {
-            alert("Осталось 10 минут до завершения теста");
+            
+            //alert("Осталось 10 минут до завершения теста");
         }
 
         if (hours == 2 && minutes == 0 && seconds == 0) {

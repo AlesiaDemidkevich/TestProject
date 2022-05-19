@@ -240,8 +240,9 @@ function switchCheck2(elem) {
 
             curElement.checked = true;
             prevElement.checked = false;
+            
         }
-
+        
     }
 }
 

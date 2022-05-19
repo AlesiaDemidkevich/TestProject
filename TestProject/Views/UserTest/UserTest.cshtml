@@ -5,6 +5,7 @@
 <body onload="clockTimer('@ViewBag.testView.Subject');">
     <link rel='stylesheet' href='~/lib/font-awesome/css/all.css' type='text/css' />
     <link rel="stylesheet" type="text/css" href="~/css/test.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/modal.css" />
     <h1 class="page-header text-center" name="Subject">@ViewBag.testView.Subject</h1>
     <div class="clockpage">
         <span id="clock"></span>
@@ -16,6 +17,7 @@
                 int a = 0;
                 int b = 0;
                 int num2 = 0;
+                int id = 0;
                 string idValue = "0";}
             <h3 style="margin-left:440px">Часть A</h3>
             @foreach (var test in @ViewBag.testView.QuestionList)
@@ -39,7 +41,8 @@
                     <div id="answers" style="margin:30px">
                         @foreach (var answer in test.AnswerList)
                         {
-                            idValue = "ch" + a.ToString();
+                            id++;
+                            idValue = "ch" + id.ToString();
                             @if (@ViewBag.testView.Subject.Equals("Русский язык") || @ViewBag.testView.Subject.Equals("Беларуская мова") || @ViewBag.testView.Subject.Equals("Английский язык"))
                             {
 
@@ -109,4 +112,19 @@
     </script>
     <script src="~/js/duplicate.js">
     </script>
+    @*<script src="~/js/modal.js">
+    </script>
+    <script>
+        var stop = document.getElementById('save');
+        (function () {
+            // создаём модальное окно
+            var modal = $modal();
+            // при клике по кнопке #show-modal
+            stop.addEventListener('click', function () {
+                // отобразим модальное окно
+                modal.show();
+                alert("the end");
+            });
+        })();
+    </script>*@
 </body>
